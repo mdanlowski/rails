@@ -1,0 +1,10 @@
+<h1>Citation <%= params[:id] %></h1>
+<h3><%= @cit.citation_text %></h3>
+<h3>
+<% 
+	date = @cit.created_at 
+	date = date.strftime("- %d %B %Y")
+%>
+<%= date %>
+
+</h3>

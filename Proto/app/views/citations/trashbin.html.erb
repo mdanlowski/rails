@@ -1,0 +1,41 @@
+	# # simple pagination mechanism
+	# @starting_post = 0 
+
+	# total_cits = @last_cit.id
+	# pages = total_cits % 3
+	
+	# if total_cits > 2
+	# 	@page_full = true
+	# end
+
+	# # decided to use will_paginate gem instead
+
+
+<!-- -------------------------------- -->
+
+<!-- <% if @page_full %> -->
+	<div class="pagination">
+		<p> Pages:
+		<%
+			def page_path(plnk)
+				# puts(@starting_post)
+				@starting_post = 3*plnk
+				puts(@starting_post)
+				puts(plnk)
+
+			end
+
+			(0..pages).each do |page_link|
+		%>
+
+		<%= 
+				link_to "#{page_link+1}", page_path(page_link)
+		%>
+
+		<% end %>
+		</p>
+	</div>
+
+<!-- <% end %> -->
+
+<!-- -------------------------------- -->

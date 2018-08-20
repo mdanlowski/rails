@@ -1,0 +1,55 @@
+<style type="text/css">
+	.quote {
+		font-style: italic;
+	}
+	.lead-font-fix {
+		font-size: 20px;
+	}
+</style>
+<!-- <h1>Pieces Of Alien Wisdom</h1> -->
+<!-- -------------------------------- -->
+
+<main role="main" class="inner cover">
+
+	<% 
+	@citations.each do |cit| 
+	# @citations[0..2].each do |cit| 
+	# (@citations[@starting_post..@starting_post+2]).each do |cit|
+		if  @last_cit.id > 12
+			@page_full = true
+		end
+	%>
+		
+		<h3 class="cover-heading text-left lead-font-fix">Citation <%= cit.id %></h3>
+
+			<p class="lead quote">
+				<%= cit.citation_text %>
+			</p>
+			<p class="text-right">
+				<%= cit.created_at.strftime("- %d %B %Y") %>
+			</p>
+		
+		
+	<% end %> 
+
+</main>
+
+
+<footer class="mastfoot mt-auto">
+	<div class="inner">
+		<!-- display pages only if there are more than 1-->
+		<% if @page_full %>
+		<p>Pages: <%= will_paginate @citations, :class => "text-center" %></p>
+		<% end %> 
+	</div>
+</footer>
+
+
+<!-- highlight proper link from Application layout nav -->
+<script>
+	$(document).ready(function(){
+		$('#home_btn').addClass('active');
+		// console.log($('nav').find('a')[0]);
+
+	});
+</script>

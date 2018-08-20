@@ -1,0 +1,40 @@
+<style type="text/css">
+	/* fixing of textbox input width*/
+	textarea {
+		width:100%;
+		display:block;
+	}
+
+</style>
+
+<h2>Add a citation here</h2>
+<!-- form_for helper -->
+<!-- citations_path invokes citations#create on submit -->
+
+<main role="main" class="inner cover">
+	<%= form_for :citation, url: citations_path do |cit| %>
+		
+		<p>
+			<%= cit.label :citation_text %> </br>
+			<%= cit.text_area :citation_text %>
+		</p>
+		<p>
+			<%= cit.submit %>
+		</p>
+
+	<% end %>
+</main>
+
+<footer class="mastfoot mt-auto">
+	<div class="inner">
+		<!-- <p>Back Home: </p> -->
+	</div>
+</footer>
+
+<!-- highlight proper link from Application layout nav -->
+<script>
+	$(document).ready(function(){
+		$('#new_q_btn').addClass('active');
+		// console.log($('nav').find('a')[0]);
+	});
+</script>
