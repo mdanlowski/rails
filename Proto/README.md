@@ -1,10 +1,10 @@
 # README
 
-$ ruby -v
+`$ ruby -v`
 
 ruby 2.3.3p222 (2016-11-21 revision 56859)
 
-$ rails version
+`$ rails version`
 
 Rails 5.1.6
 
