@@ -1,0 +1,22 @@
+<h1>Pages#index</h1>
+<div>
+	<%= @numero %>
+	<br/>
+
+<p>Difference between standard ruby code and erb rendering</p>
+<p>perfectly valid ruby code:</p>
+<p>
+	<%=
+	3.times do |event|
+		puts event # that actually goes to server console
+	end	
+	%> 
+</p>
+
+<p>Also valid code, but each line is %%tified</p>
+
+	<% 5.times do |event| %>
+	<%=  event %>  <br />
+	<% end %>
+
+</div>

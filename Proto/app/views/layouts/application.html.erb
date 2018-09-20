@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Proto</title>
+<head>
+  <title>Proto</title>
 
-    <%= csrf_meta_tags %>
+  <%= csrf_meta_tags %>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <%= stylesheet_link_tag    'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' %>
+  <%= stylesheet_link_tag    'https://getbootstrap.com/docs/4.1/examples/cover/cover.css' %>
 
-    <%= stylesheet_link_tag    'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' %>
-    <%= stylesheet_link_tag    'https://getbootstrap.com/docs/4.1/examples/cover/cover.css' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'https://code.jquery.com/jquery-3.3.1.js' %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'https://code.jquery.com/jquery-3.3.1.js' %>
+  <style type="text/css">
+  /*removal of box shadow from example style "cover.css"*/
+  body {
+   box-shadow: none;
+ }
+ /*a line section divisor cooked up on the lap*/
+ .line {
+   margin-top: 50px;
+   margin-bottom:  20px;
+   height: 2px;
+   width: 100%;
+   border: 2px solid ivory;
+   max-width: 100%;
+ }
+</style>
 
-	<style type="text/css">
-		/*removal of box shadow from example style "cover.css"*/
-		body {
-			box-shadow: none;
-		}
-		/*a line section divisor cooked up on the lap*/
-		.line {
-			margin-top: 50px;
-			margin-bottom:  20px;
-			height: 2px;
-			width: 100%;
-			border: 2px solid ivory;
-			max-width: 100%;
-		}
-	</style>
+</head>
 
-  </head>
+<body class="text-center">
 
-  <body class="text-center">
-
-  	<div class="cover-container w-100 h-100 p-3 d-flex mx-auto flex-column"> 
-  		<!--   -->
-      <header class="masthead mb-auto">
-        <div class="inner">
-          <h3 class="masthead-brand">Pieces of Alien Wisdom</h3>
-          <nav class="nav nav-masthead justify-content-center">
+ <div class="cover-container w-100 h-100 p-3 d-flex mx-auto flex-column"> 
+  <!--   -->
+  <header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">Pieces of Alien Wisdom</h3>
+      <nav class="nav nav-masthead justify-content-center">
             <!-- <a class="nav-link active" href="/">Home</a>
-            <a class="nav-link" href="/citations/new">Add a Quote</a> -->
-            <%= link_to "Home", root_path, :class => "nav-link", :id => "home_btn" %>
-			<%= link_to "Add a Quote", new_citation_path, :class => "nav-link", :id => "new_q_btn"  %>
-          </nav>
-        </div>
-        <div class="line"></div>
-      </header>
+              <a class="nav-link" href="/citations/new">Add a Quote</a> -->
+              <%= link_to "Home", root_path, :class => "nav-link", :id => "home_btn" %>
+              <%= link_to "Add a Quote", new_citation_path, :class => "nav-link", :id => "new_q_btn"  %>
+            </nav>
+          </div>
+          <div class="line"></div>
+        </header>
 
-    <%= yield %>
+        <%= yield %>
 
-  </body>
-</html>
+      </body>
+      </html>

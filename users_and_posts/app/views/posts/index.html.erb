@@ -1,0 +1,10 @@
+<h1>Posts#index</h1>
+<p>Find me in app/views/posts/index.html.erb</p>
+
+	<% @posts.each do |p| %> 
+	<h3>Post #<%= p.id %></h3>
+	<h4><%= p.posttitle %></h4>
+	<p><%= p.postbody %></p>
+	<p><em>created by: <%= User.find(p.authorid).username %> </em></p>
+	<hr>
+	<% end %>

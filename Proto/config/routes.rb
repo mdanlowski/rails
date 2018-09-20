@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # get 'citations/index'
 
   resources :citations
-  # Automatically provided through resources
+  # Automatically provided through resources: RESTful routes
 #		   root GET    /                             citations#index
 #     citations GET    /citations(.:format)          citations#index
 #               POST   /citations(.:format)          citations#create
