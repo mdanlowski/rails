@@ -6,7 +6,7 @@ Ruby on Rails practice
 - add and display anonymous qoutes with pagination
 
 
-## learnin_cms
+## learning_cms
 
 - building a csm system
 
