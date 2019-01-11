@@ -3,6 +3,8 @@ class PagesController < ApplicationController
   layout false		# turn off the layouts
 
   def index
+    @array = [1,2,3,4,5]
+
   	render('index') # default, always in place - can be overriden -> last lines comments
   	@numero = [params[:unicorn], params[:id]]
   end
@@ -14,6 +16,9 @@ class PagesController < ApplicationController
   end
 
   def hello 
+    @array = [1,2,3,4,5]
+    @id = params['id']
+    @page = params[:page]
   # action doesnt need to be defined 
   # if there is nothing specified inside,
   # but it is good practice

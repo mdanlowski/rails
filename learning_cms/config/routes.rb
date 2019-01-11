@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   get 'pages/about'
  
   # ROOT ROUTE
-  root 'aliens#ayylmao' # same as: match '/', :to => "aliens/ayylmao", :via => :get
+  # root 'aliens#ayylmao' # same as: match '/', :to => "aliens/ayylmao", :via => :get
+  root 'pages#index'
 
   # DEFAULT ROUTES:
   # get ':controller(/:action(/:id(/:unicorn)))' # () parts are optional and can be omitted

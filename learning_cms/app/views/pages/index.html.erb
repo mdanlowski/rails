@@ -15,8 +15,16 @@
 
 <p>Also valid code, but each line is %%tified</p>
 
-	<% 5.times do |event| %>
+	<% @array.each do |event| %>
 	<%=  event %>  <br />
 	<% end %>
+
+	#ctrl only needed when redir to another one
+	<%= link_to("hello us on the microwave cosmic background", {:controller => 'pages', :action => 'hello'})  %>
+	<br />  #will use current ctrl 
+	<%= link_to("greet us on the microwave cosmic background", {:action => 'hello'}) %>
+	<br />  #with params
+	<%= link_to("meet us in params[]", {:action => 'hello', :page => 4, :id => 20}) %>
+	<br />  #
 
 </div>

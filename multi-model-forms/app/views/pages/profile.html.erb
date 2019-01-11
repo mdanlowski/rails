@@ -1,0 +1,14 @@
+<h1>Pages#profile</h1>
+<p>Find me in app/views/pages/profile.html.erb</p>
+
+<%= form_for :user, url: users_path do |cit| %>
+		
+		<p>
+			<%= cit.label :citation_text %> </br>
+			<%= cit.text_area :citation_text %>
+		</p>
+		<p>
+			<%= cit.submit %>
+		</p>
+
+	<% end %>
