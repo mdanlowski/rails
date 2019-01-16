@@ -1,0 +1,11 @@
+<nav>
+	<%= link_to_unless_current "Home", root_path %> /
+	<%= link_to_unless_current "Featured Posts", pages_featured_path %> /
+	<%= link_to_unless_current "About this Blog", pages_about_path %> /
+	<%= link_to_unless_current "Contact Us", pages_contact_path %> 
+	&emsp; | &emsp; 
+	<!-- shit above is temporary ofc  -->
+	<%= link_to_unless_current "Login", root_path+'login' %> /
+	<%= link_to_unless_current "Register as Author", root_path+'register' %>
+
+</nav>

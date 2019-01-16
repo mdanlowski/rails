@@ -1,0 +1,43 @@
+<h1>Users#new - Registration Page</h1>
+
+<p>
+	<h3>Welcome to the most lit blog on Aliens. Register if you wish to be probed.</h3>
+</p>
+
+<div class="errors">
+	<% if flash[:reg_errors] %>
+		<% flash[:reg_errors].each do |e| %>
+			<p> <%= e %> </p>
+		<% end %>
+	<% end %>
+</div>
+
+<%= form_for :user, url: { action: 'create' } do |u| %>
+	<p>
+		<%= u.label :email %>
+		<br />
+		<%= u.email_field :email, placeholder: 'Your e-mail address' %>
+	</p>
+	<p>
+		<%= u.label :username %>
+		<br />
+		<%= u.text_field :username, placeholder: 'How you wish to be called?'  %>
+	</p>
+	<p>
+		<%= u.label :password %>
+		<br />
+		<%= u.password_field :password, placeholder: 'Choose a password'  %>
+	</p>
+
+	<p>
+		<%= u.label :confirm_password %>
+		<br />
+		<%= u.password_field :confirm_password, placeholder: 'Retype the password'   %>
+	</p>
+
+	<p>
+		<%= u.submit %>
+	</p>
+
+
+<% end %>

@@ -1,0 +1,6 @@
+	<p>
+		<%= u.label :confirm_password %>
+		<br />
+		<%= u.password_field :confirm_password, placeholder: 'Retype the password'   %>
+	</p>
+
