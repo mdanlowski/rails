@@ -4,11 +4,12 @@ class User < ApplicationRecord
   # @TODO do sth about error message!
   has_secure_password
 
-  validates :email, uniqueness: true
+  # validates :email
   validates :username, presence: true, uniqueness: true, length: { minimum: 4, maximum: 20 }
   validates :password, :confirmation => true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
+  has_many :posts
 
 end
 

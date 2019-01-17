@@ -1,15 +1,17 @@
 <nav class="global-nav">
-	<%= link_to_unless_current "Home", root_path %> /
-	<%= link_to_unless_current "Featured Posts", root_path %> /
-	<%= link_to_unless_current "About this Blog", root_path %> /
-	<%= link_to_unless_current "Contact Us", root_path %> 
+	<div class="nav-item"><%= link_to_unless_current "Home", root_path %></div>
+	<div class="nav-item"><%= link_to_unless_current "Featured Posts", root_path %></div>
+	<div class="nav-item"><%= link_to_unless_current "About this Blog", root_path %></div>
+	<div class="nav-item"><%= link_to_unless_current "Contact Us", root_path %> </div>
+
 	<div class="to-right">
 	  <% if current_user %>
-		<%= link_to "Dashboard", { controller: 'users', action: 'show' } %> /
-		<%= link_to "Logout", sessions_destroy_path, method: :delete %>
+		<div class="nav-item"><%= link_to "Dashboard", { controller: 'users', action: 'show' } %></div>
+		<div class="nav-item"><%= link_to "Logout", sessions_destroy_path, method: :delete %></div>
 	  <% else %>
-		<%= link_to_unless_current "Login", { controller: 'sessions', action: 'new' } %> /
-		<%= link_to_unless_current "Join as Author", { controller: 'users', action: 'new' } %> 
+		<div class="nav-item"><%= link_to_unless_current "Login", { controller: 'sessions', action: 'new' } %></div>
+		<div class="nav-item"><%= link_to_unless_current "Join as Author", { controller: 'users', action: 'new' } %></div>
 	  <% end -%>
 	</div>
+
 </nav>

@@ -1,41 +1,41 @@
-<h1>Users#new - Registration Page</h1>
+<div class="registration-wrapper">
+	<h1>Join us</h1>
+	<h3>And together we can rule The Galaxy...</h3>
 
-<p>
-	<h3>Welcome to the most lit blog on Aliens. Register if you wish to be probed.</h3>
-</p>
-
-<div class="errors">
-	<% if flash[:register_errors] %>
-	Please correct following:
-	<ul>
-		<% flash[:register_errors].each do |e| %>
-			<li> <%= e %> </li>
+	<div class="errors">
+		<% if flash[:register_errors] %>
+		Please correct following:
+		<ul>
+			<% flash[:register_errors].each do |e| %>
+				<li> <%= e %> </li>
+			<% end %>
+		</ul>
 		<% end %>
-	</ul>
+	</div>
+
+	<%= form_for :user, url: { action: 'create' } do |u| %>
+		<div class="form-register">
+			<%= u.label :email %>
+			<%= u.email_field :email, :autofocus => true, placeholder: 'Your email address (optional)', class: "form-control top-form-field" %>
+		
+		
+			<%= u.label :username %>
+			<%= u.text_field :username, placeholder: 'Username - used for authentication', class: "form-control middle-form-field" %>
+		
+		
+			<%= u.label :password %>
+			<%= u.password_field :password, placeholder: 'Choose a password (min. 6 characters)', class: "middle-form-field form-control" %>
+		
+		
+			<%= u.label :password_confirmation %>
+			<%= u.password_field :password_confirmation, placeholder: 'Retype the password', class: "form-control bottom-form-field" %>
+
+		<div class="form-finalize text-center">
+			<p>
+				<%= u.submit 'Register', class: "btn btn-info" %>
+			</p>
+		</div>
+		</div>
+
 	<% end %>
 </div>
-
-<%= form_for :user, url: { action: 'create' } do |u| %>
-	<p>
-		<%= u.label :email %> <br>
-		<%= u.email_field :email, :autofocus => true, placeholder: 'This is optional for now' %>
-	</p>
-	<p>
-		<%= u.label :username %> <br>
-		<%= u.text_field :username, placeholder: 'Used for authentication' %>
-	</p>
-	<p>
-		<%= u.label :password %> <br>
-		<%= u.password_field :password, placeholder: 'Choose a password' %>
-	</p>
-	<p>
-		<%= u.label :password_confirmation %> <br>
-		<%= u.password_field :password_confirmation, placeholder: 'Retype the password' %>
-	</p>
-
-	<p>
-		<%= u.submit 'Register' %>
-	</p>
-
-
-<% end %>

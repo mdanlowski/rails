@@ -1,4 +1,14 @@
-<%= render('layouts/header') %>
 
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+
+<h1>Posts#index - Homepage</h1>
+
+<% @posts.each do |p| %>
+<div class="post index-post">
+	<hr />
+	<h3><%= p.title %></h3>
+	<p><%= p.body %></p>
+	<p class="text-right">Written by: <span class="index-username"><%= User.find(p.user_id).username %></span> at: 
+	<%= p.created_at %></p>
+
+</div>
+<% end %>
