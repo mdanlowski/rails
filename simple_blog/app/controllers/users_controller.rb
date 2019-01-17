@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 # before_action :authorize, except: [:index, :show]
 
   before_action :authorize, only: [:show]
-  # before_action :not_for_logged_in, except: [:show]
 
   def new
     # @user = User.new

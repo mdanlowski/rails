@@ -15,8 +15,9 @@
  */
 
  #app {
- 	margin: 20px;
+ 	/*margin: 20px;*/
  }
+
 
 .n-a { /* notices / alerts */
 	text-align: center;
@@ -32,10 +33,12 @@
 	color: #091534;
 }
 
+
 .global-nav {
 	height: 30px;
-	background-color: black;
+	background-color: #091534;
 	color: white;
+	padding-left: 5px;
 	position: sticky;
 	top: 0;
 }
@@ -46,6 +49,29 @@
 	right: 0;
 	padding-right: 5px;
 }
+
+
+.homepage-header {
+	background: url(https://i.imgur.com/dCY0b8A.jpg);
+	max-width: 100%;
+	min-height: 100px;
+	max-height: 250px;
+}
+div.blend {
+	background: rgba(103, 143, 254, 0.3);
+	max-height: 100%;
+	width: 100%;
+	padding: 4rem 2rem;
+
+	-webkit-transition: background 2s; /* Safari */
+  	transition: background 2s;
+
+}
+.homepage-header > h1 {
+	/*mix-blend-mode: darken;*/
+	margin: auto;
+}
+
 
 .errors {
 	color: red;

@@ -1,0 +1,31 @@
+<header class="homepage-header">
+	<div class="blend">
+		<h1 class="text-center">Life Beyond Earth</h1>
+		
+	</div>
+</header>
+
+<input onchange="sliderChangeMaskValue();" type="range" min="0" max="100" id="scale" step="1" name="mask" />
+
+
+
+<!-- a toy cooked on a break -->
+<script type="text/javascript">
+
+	function sliderChangeMaskValue() {
+		var hdrMask = document.querySelector('.blend');
+		var slider = document.querySelector('#scale').value / 100;
+		console.log('rgba(103, 143, 254, '+ slider + ')')
+
+		hdrMask.style.background = 'rgba(103, 143, 254, '+ slider + ')';
+	}
+
+</script>
+
+<style type="text/css">
+	#scale {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+</style>
