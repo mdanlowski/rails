@@ -1,3 +1,15 @@
 <nav class="global-nav">
 	<%= link_to_unless_current "Home", root_path %> /
+	<%= link_to_unless_current "Featured Posts", root_path %> /
+	<%= link_to_unless_current "About this Blog", root_path %> /
+	<%= link_to_unless_current "Contact Us", root_path %> 
+	<div class="to-right">
+	  <% if current_user %>
+		<%= link_to "Dashboard", { controller: 'users', action: 'show' } %> /
+		<%= link_to "Logout", { controller: 'sessions', action: 'destroy' } %>
+	  <% else %>
+		<%= link_to_unless_current "Login", { controller: 'sessions', action: 'new' } %> /
+		<%= link_to_unless_current "Join as Author", { controller: 'users', action: 'new' } %> 
+	  <% end -%>
+	</div>
 </nav>

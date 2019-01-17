@@ -1,7 +1,7 @@
 <h1>Sessions#new - Login Page</h1>
 
 <p>
-	<h3>Please provide username and password to log in.</h3>	
+	<h3>Please use username and password to sign in.</h3>	
 </p>
 
 <div class="errors">
@@ -16,7 +16,7 @@
 	<p>
 		<%= s.label :username %>
 		<br />
-		<%= s.text_field :username, placeholder: 'Username'  %>
+		<%= s.text_field :username, :autofocus => true, placeholder: 'Username'  %>
 	</p>
 	<p>
 		<%= s.label :password %>
@@ -24,7 +24,7 @@
 		<%= s.password_field :password, placeholder: 'Password'  %>
 	</p>
 	<p>
-		<%= s.submit %>
+		<%= s.submit 'Sign in' %>
 	</p>
 
 <% end %>

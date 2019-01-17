@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   post 'sessions/create'
 
   get 'users/show'
-  get 'users/new'
+  get 'users/new', as: :new_user
   # match '/users/create' => 'users#create', via: :post
+  # post 'users' => 'users#create'
   post 'users/create'
 
   resources :posts

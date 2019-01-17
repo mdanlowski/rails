@@ -1,12 +1,22 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+if Gem.win_platform?
+  ruby '2.3.3'
+else
+  ruby '2.5.1'
+end 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record
-gem 'pg', '>= 0.18', '< 2.0'
+if not Gem.win_platform?
+  gem 'pg', '>= 0.18', '< 2.0'
+elsif Gem.win_platform?
+  gem 'sqlite3'
+end
+
+    
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -23,7 +33,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
-gem 'rails-footnotes', '~> 4.1.8'
+gem 'rails-footnotes', '~> 4.1.8' if not Gem.win_platform?
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

@@ -18,9 +18,33 @@
  	margin: 20px;
  }
 
+.n-a { /* notices / alerts */
+	text-align: center;
+	background-color: dodgerblue;
+	font-weight: bold;
+	font-size: 16pt;
+	margin-bottom: 0px !important;
+}
+.notice {
+	color: white;
+}
+.alert {
+	color: red;
+}
+
 .global-nav {
+	height: 30px;
+	background-color: black;
+	color: white;
 	position: sticky;
 	top: 0;
+}
+/* @TODO add media qrs bcuz it melts on small scr sizes*/
+.to-right {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding-right: 5px;
 }
 
 .errors {
