@@ -8,11 +8,11 @@ Rails.application.routes.draw do
   # get 'posts/destroy'
 
   get 'sessions/new'
-  get 'sessions/destroy'
+  delete 'sessions/destroy'
   post 'sessions/create'
 
   get 'users/show'
-  get 'users/new', as: :new_user
+  get 'users/new' #, as: :new_user # @TODO what dat for
   # match '/users/create' => 'users#create', via: :post
   # post 'users' => 'users#create'
   post 'users/create'

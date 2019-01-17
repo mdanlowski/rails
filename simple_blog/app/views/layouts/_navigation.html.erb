@@ -6,7 +6,7 @@
 	<div class="to-right">
 	  <% if current_user %>
 		<%= link_to "Dashboard", { controller: 'users', action: 'show' } %> /
-		<%= link_to "Logout", { controller: 'sessions', action: 'destroy' } %>
+		<%= link_to "Logout", sessions_destroy_path, method: :delete %>
 	  <% else %>
 		<%= link_to_unless_current "Login", { controller: 'sessions', action: 'new' } %> /
 		<%= link_to_unless_current "Join as Author", { controller: 'users', action: 'new' } %> 

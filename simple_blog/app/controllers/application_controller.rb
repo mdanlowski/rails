@@ -9,4 +9,11 @@ class ApplicationController < ActionController::Base
 	# @TIPS
 	# ||= ensures caching instead poking the db
 
+	def authorize
+		if current_user.nil?
+			redirect_to '/sessions/new'
+			flash[:alert] = "You must be logged in to see this page"
+		end
+	end
+	
 end

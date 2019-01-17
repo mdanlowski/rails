@@ -1,8 +1,20 @@
 class UsersController < ApplicationController
+# @TIPS
+# You can restrict more than one page by using comma separated values:
+# before_action :authorize, only: [:secret, :index, :edit]
+# or all pages except those listed:
+# before_action :authorize, except: [:index, :show]
+
+  before_action :authorize, only: [:show]
+  # before_action :not_for_logged_in, except: [:show]
+
   def new
     # @user = User.new
   	# flash[:reg_errors] = ['ayylmao']
-
+    if current_user
+      redirect_to root_path
+      flash[:alert] = "You must log out to register a new account"
+    end
   end
 
   def create
@@ -22,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(session[:user_id])
+  	# @user = current_user
   end
 
   private

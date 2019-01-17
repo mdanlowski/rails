@@ -20,16 +20,16 @@
 
 .n-a { /* notices / alerts */
 	text-align: center;
-	background-color: dodgerblue;
+	background-color: #678FFE;
 	font-weight: bold;
 	font-size: 16pt;
 	margin-bottom: 0px !important;
 }
-.notice {
-	color: white;
+.notices {
+	color: #DBE5FF;
 }
-.alert {
-	color: red;
+.alerts {
+	color: #091534;
 }
 
 .global-nav {
