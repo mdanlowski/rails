@@ -1,9 +1,0 @@
-	<p>
-		<%= u.label :password_confirmation %>
-		<br />
-		<%= u.password_field :password_confirmation, placeholder: 'Retype the password'   %>
-	</p>
-
-<h2>Welcome <%= User.find(session[:user_id]).username %>!</h2>
-
-

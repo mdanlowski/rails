@@ -8,6 +8,8 @@ class UsersController < ApplicationController
   before_action :authorize, only: [:show]
 
   def new
+    @render_header = true
+
     # @user = User.new
   	# flash[:reg_errors] = ['ayylmao']
     if current_user
@@ -17,13 +19,15 @@ class UsersController < ApplicationController
   end
 
   def create
+    @render_header = true
+
   	@user = User.new(user_register_params)
     # render plain: params[:user].inspect
   	if @user.save
-      session[:user_id] = @user.id
-  		  puts session[:user_id], @user.id
-  		redirect_to '/users/show'
-      flash[:notice] = 'Success. You have registered!'
+        session[:user_id] = @user.id
+  		# puts session[:user_id], @user.id
+  	    redirect_to '/users/show'
+        flash[:notice] = 'Success. You have registered!'
   	else
   		flash[:register_errors] = @user.errors.full_messages
   		redirect_to '/users/new'
@@ -33,6 +37,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @render_header = false
+
   	# @user = current_user
   end
 

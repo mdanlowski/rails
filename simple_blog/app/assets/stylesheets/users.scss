@@ -1,73 +1,55 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*
+*/
+$bd: #091534;
+$bmd: #1E3471;
+$bm: #213B82;
+$bml: #17a2b8;
+$bl: #7eacdc;
 
-.errors {
-	ul {
-		padding-left: 10px !important;
+.dashboard-wrapper {
+	margin-top: 50px;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: 45vh 45vh;
+	.dashboard-tile {
+		/*border: 1px solid white;*/
+		padding: 20px
 	}
 }
 
-.registration-wrapper {
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-  	justify-content: center;
-	align-items: center;
-	padding-top: 10vh;
-	padding-bottom: 5vh;
+.tl {
+	background-color: #213B82;
+
+}
+.tr {
+	background-color: #17a2b8;
+	color: $bd;
+	hr {
+		background-color: $bd;
+	}
+}
+.bl {
+	background-color: #7eacdc;
+	color: $bd;
+	hr {
+		background-color: $bd;
+	}
+
+}
+.br {
+	background-color: #1E3471;
+
 }
 
-.field_with_errors {
-	color: red;
- 
-}
+/*
 
-.top-form-field  {
-	margin-top: -1px;
-	border-bottom-right-radius: 0 !important;
-	border-bottom-left-radius: 0 !important;
-}
+#091534
+#1E3471
+#213B82
+#17a2b8
+#7eacdc
 
-/*middle field: */
-.middle-form-field {
-	margin-top: -1px;
-	border-bottom-right-radius: 0 !important;
-	border-bottom-left-radius: 0 !important;
-	border-top-right-radius: 0 !important;
-	border-top-left-radius: 0 !important;
-}
-
-/*bottom field: */
-.bottom-form-field {
-	border-top-right-radius: 0 !important;
-	border-top-left-radius: 0 !important;
-	margin-top: -1px;
-}
-
-.form-register {
-	padding-top: 30px;
-	/*width: 100%;*/
-	margin: auto;
-}
-
-.form-register .form-control {
-  max-width: 320px !important;
-  width: 320px !important;
-  position: relative;
-  box-sizing: border-box;
-  height: auto;
-  padding: 10px;
-}
-
-.form-register .form-control:focus {
-  z-index: 2;
-}
-
-.form-finalize {
-	margin: 10px;
-}
-
-label {
-	display: none !important;
-}
+*/

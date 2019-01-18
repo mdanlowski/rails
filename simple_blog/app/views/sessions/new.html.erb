@@ -1,8 +1,7 @@
-<h1>Sessions#new - Login Page</h1>
+<div class="form-wrapper">
+<h1>Login</h1>
+<h3 class="text-center">Please use username and password to sign in.</h3>
 
-<p>
-	<h3>Please use username and password to sign in.</h3>	
-</p>
 
 <div class="errors">
 	<% if flash[:login_errors] %>
@@ -11,20 +10,19 @@
 		<% end %>
 	<% end %>
 </div>
-
 <%= form_for :session, url: { action: 'create' } do |s| %>
+<div class="text-center form-register">
 	<p>
 		<%= s.label :username %>
-		<br />
-		<%= s.text_field :username, :autofocus => true, placeholder: 'Username'  %>
-	</p>
-	<p>
+		<%= s.text_field :username, :autofocus => true, placeholder: 'Username', class: "form-control top-form-field"  %>
 		<%= s.label :password %>
-		<br />
-		<%= s.password_field :password, placeholder: 'Password'  %>
+		<%= s.password_field :password, placeholder: 'Password', class: "form-control bottom-form-field"  %>
 	</p>
 	<p>
-		<%= s.submit 'Sign in' %>
+		<%= s.submit 'Sign in', class: "btn-anim btn-mid anim-span" %>
 	</p>
-
+</div>
 <% end %>
+
+
+</div>

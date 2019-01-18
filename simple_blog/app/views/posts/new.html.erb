@@ -1,2 +1,44 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<header class="newpost-header">
+	<h1 class="text-center">Create a new Blog Entry</h1>
+</header>
+<div class="form-wrapper newpost-form"> 
+	<div class="errors aside">
+		<% if flash[:new_post_errors] %>
+		Please correct following:
+		<ul>
+			<% flash[:new_post_errors].each do |e| %>
+				<li> <%= e %> </li>
+			<% end %>
+		</ul>
+		<% end %>
+	</div>
+
+	<div class="form-register text-center">
+		<%= form_for :post, url: { action: 'create' } do |p| %>
+			<div class=""> 
+				<%= p.label :title %>
+				<%= p.text_field :title, placeholder: 'Title of your post', class: "form-control top-form-field post-title-field" %>
+			</div>
+
+			<div class="">
+				<%= p.label :body %>
+				<%= p.text_area :body, placeholder: 'The content of your post...', class: "form-control bottom-form-field post-body-field" %>
+			</div>
+
+			<div class="!not-implemented-yet post-attachment-field">
+				<%= p.label :attachments %>
+
+			</div>
+
+
+			<div class="form-finalize"> <%= p.submit "Submit the Post", class: "btn-anim btn-drk anim-span"%>
+			</div>
+
+		<% end %>
+	</div>
+			<!-- <input type="file" name="attach"> -->
+</div>		
+
+
+<h1 class="text-center">_</h1>
+

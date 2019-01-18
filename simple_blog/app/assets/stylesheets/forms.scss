@@ -1,0 +1,92 @@
+.errors {
+	ul {
+		padding-left: 10px !important;
+	}
+}
+.aside {
+
+}
+
+.form-wrapper {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-top: 5vh;
+	padding-bottom: 5vh;
+}
+
+.field_with_errors {
+	color: red;
+
+}
+
+.top-form-field  {
+	margin-top: -1px;
+	border-bottom-right-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
+}
+
+.middle-form-field {
+	margin-top: -1px;
+	border-bottom-right-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+	border-top-left-radius: 0 !important;
+}
+
+.bottom-form-field {
+	border-top-right-radius: 0 !important;
+	border-top-left-radius: 0 !important;
+	margin-top: -1px;
+}
+
+.form-register {
+	/*padding-top: 30px;*/
+	/*width: 100%;*/
+	margin: auto;
+}
+
+.form-register .form-control {
+	max-width: 320px;
+	width: 320px;
+	/*max-width: 100% !important;*/
+	position: relative;
+	box-sizing: border-box;
+	height: auto;
+	padding: 10px;
+}
+
+.post-title-field, .post-body-field {
+	max-width: 500px !important;
+	width: 500px !important;
+}
+
+.post-body-field {
+	max-height: 400px !important;
+	height: 400px !important;
+}
+
+
+.form-register .form-control:focus {
+	z-index: 2;
+}
+
+.form-finalize {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+label {
+	display: none !important;
+}
+
+
+.newpost-form {
+	background-color: #1E3471;
+	margin: 0 0 0 -50% !important;
+
+	width: 100vw !important;
+	
+}

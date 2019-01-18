@@ -17,7 +17,9 @@
   <body class="body">
     <%= render('layouts/alerts') %>
     <%= render('layouts/navigation') %>
-    <%= render('layouts/header') %>
+    <% if not @render_header.nil? and @render_header == true %>
+      <%= render('layouts/header') %>
+    <% end %>
 
     <div id="app">
       <%= yield %>

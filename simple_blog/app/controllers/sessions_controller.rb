@@ -2,6 +2,8 @@ class SessionsController < ApplicationController
 
 
   def new
+    @render_header = true
+  	
     # flash[:login_errors] = ['ayylmao']
     if current_user
       redirect_to root_path

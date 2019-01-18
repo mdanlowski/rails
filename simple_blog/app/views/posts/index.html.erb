@@ -1,14 +1,21 @@
 
+<p></p>
+<h1 class="text-center">👽</h1>
 
-<h1>Posts#index - Homepage</h1>
-
-<% @posts.each do |p| %>
+<% @posts.reverse_each do |p| %>
+<hr />
 <div class="post index-post">
-	<hr />
 	<h3><%= p.title %></h3>
-	<p><%= p.body %></p>
+	<p><%= simple_format(p.body) %></p>
 	<p class="text-right">Written by: <span class="index-username"><%= User.find(p.user_id).username %></span> at: 
 	<%= p.created_at %></p>
+	<% if p.created_at.to_s != p.updated_at.to_s %>
+		<p class="text-right"><sup>
+			Last edit: <%= p.updated_at %></p>
+		</sup></p>
+	<% end -%>
 
 </div>
 <% end %>
+
+<!-- .gsub(/(?:\n\r?|\r\n?)/, '<br>') -->
