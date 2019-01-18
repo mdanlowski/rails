@@ -2,22 +2,73 @@
 	<h1 class="text-center">Your Dashboard</h1>
 </header>
 
-<div class="dashboard-wrapper">
+<div class="dashboard-wrapper anim-fade-in">
 	<div class="dashboard-tile tl">
 		<hr />
-		TL
+		<h4>Your Photo:</h4>
+		
+		<div class="align-topdown">
+			<div class="dashboard-img text-center">
+				<img class="img img-fluid rounded-circle" src="https://avatars0.githubusercontent.com/u/24384407?s=460&v=4">
+			</div>
+			<!-- <hr /> -->
+			<div class="text-center">
+				<input class="btn-anim btn-drk anim-span" type="submit" name="test" value="Change">
+			</div>	
+		</div>
 	</div>
-	<div class="dashboard-tile tr">
+
+	<div class="dashboard-tile tr list-oveflow">
 		<hr />
-		TR
-	</div>
+		<h4>Your posts:</h4>
+		<!-- <div class="list-oveflow"> -->
+		<% if @current_user_posts.length > 0 %>
+			<ul class="dashboard-post-list">
+				<% @current_user_posts.each do |p|  %>
+					<li>
+						<p>
+							- <a class="" href="/posts/<%= p.id %>">
+								<em><%= p.title %></em>
+							</a>
+						</p>
+						<p><sup><%= p.updated_at %></sup></p>
+					</li>
+				<% end %>
+			</ul>
+		<% else %>
+			<h5>You have no posts yet.
+			<%= link_to "Go cook some!", { controller: 'posts', action: 'new' } %></h5>
+		<% end %>
+		<!-- </div> -->
+	</div>	
+
 	<div class="dashboard-tile bl">
 		<hr />
-		BL
+		<h4>Your Bio:</h4>
+
+		<div class="align-topdown ">
+			<div class="dashboard-bio text-center">
+				
+				<div contenteditable="true">
+					Few words about you go here
+				</div>
+
+			</div>
+			<hr />
+
+			<div class="text-center">
+				<input class="btn-anim btn-drk anim-span" type="submit" name="test" value="Edit">
+			</div>	
+		</div>
+		
 	</div>
+
 	<div class="dashboard-tile br">
 		<hr />
-		BR
+		<h4>Your friends:</h4>
+
+		Do you have any?
+		
 	</div>
 
 </div>
@@ -26,3 +77,4 @@
 
 <h1 class="text-center">_</h1>
 
+<%  %>

@@ -38,6 +38,7 @@ class UsersController < ApplicationController
 
   def show
     @render_header = false
+    @current_user_posts = current_user.posts.all
 
   	# @user = current_user
   end

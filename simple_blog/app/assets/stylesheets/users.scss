@@ -8,20 +8,64 @@ $bmd: #1E3471;
 $bm: #213B82;
 $bml: #17a2b8;
 $bl: #7eacdc;
+$bt: #DBE5FF;
+
+@mixin link_reset {
+	color: $bd;
+	text-decoration: underline;
+	font-weight: bold;
+
+}
+
+@-webkit-keyframes transparency {
+    0%   { opacity: 0; /* Google Chrome & Webkit Nightlies */}
+    100% { opacity: 1; /* Google Chrome & Webkit Nightlies */ }
+}
+
+.anim-fade-in {
+	-webkit-animation: transparency 2s 1;
+	animation: transparency 2s 1;
+}
 
 .dashboard-wrapper {
 	margin-top: 50px;
 	display: grid;
 	grid-template-columns: 50% 50%;
 	grid-template-rows: 45vh 45vh;
+
 	.dashboard-tile {
 		/*border: 1px solid white;*/
-		padding: 20px
+		padding: 5px 20px 5px 20px;
 	}
+
+}
+/*@ TODO NIE DZIAŁA KURŁŁŁŁ */
+.align-topdown  {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.dashboard-img {
+	/*max-height: 60%;*/
+	max-width: 60%;
+	margin: auto;
+	padding-bottom: 5%;
+}
+
+.list-oveflow {
+	overflow-y: scroll;
+	/*overflow-x: hidden;*/
+}
+
+.dashboard-bio {
+	max-height: 80% !important;
+	height: 80% !important;
 }
 
 .tl {
 	background-color: #213B82;
+
 
 }
 .tr {
@@ -29,6 +73,11 @@ $bl: #7eacdc;
 	color: $bd;
 	hr {
 		background-color: $bd;
+	}
+	a { @include link_reset; }
+	a:hover {
+		@include link_reset;
+		color: $bt;
 	}
 }
 .bl {
@@ -43,6 +92,21 @@ $bl: #7eacdc;
 	background-color: #1E3471;
 
 }
+
+.dashboard-post-list {
+	font-size: 10pt;
+	list-style-type: square;
+	li {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			p {
+				margin-bottom: 5px; 
+				margin-left: -20px;
+			}
+	}
+}
+
 
 /*
 
