@@ -12,4 +12,4 @@ Ruby on Rails practice
 
 ## users_and_posts
 
-- MySql exercise with users and dependent posts
+- MySql exercise with users and dependent posts [abandoned]
