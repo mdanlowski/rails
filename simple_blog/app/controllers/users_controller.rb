@@ -21,15 +21,15 @@ class UsersController < ApplicationController
   def create
     @render_header = true
 
-  	@user = User.new(user_register_params)
+  	user = User.new(user_register_params)
     # render plain: params[:user].inspect
-  	if @user.save
-        session[:user_id] = @user.id
+  	if user.save
+        session[:user_id] = user.id
   		# puts session[:user_id], @user.id
   	    redirect_to '/users/show'
         flash[:notice] = 'Success. You have registered!'
   	else
-  		flash[:register_errors] = @user.errors.full_messages
+  		flash[:register_errors] = user.errors.full_messages
   		redirect_to '/users/new'
   	end
   	
@@ -37,16 +37,34 @@ class UsersController < ApplicationController
   end
 
   def show
+    # @user = User.find(params[:id])
     @render_header = false
     @current_user_posts = current_user.posts.all
 
   	# @user = current_user
   end
 
-  private
-  	def user_register_params
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_edit_photo)
+      flash[:notice] = 'Data updated successfully.'
+      redirect_to users_show_path
+    else
+      flash[:edit_user_errors] = @user.errors.full_messages
+      render 'edit'
+    end
+    # current_user.update_attributes(user_edit_params)
+  end
+
+  private def user_register_params
   		params.require(:user).permit(:email, :username, :password, :password_confirmation)
   	end
-
+  private def user_edit_photo
+      params.require(:user).permit(:photo)
+    end
 
 end

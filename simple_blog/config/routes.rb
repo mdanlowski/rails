@@ -12,12 +12,17 @@ Rails.application.routes.draw do
   post 'sessions/create'
 
   get 'users/show'
+  get 'users/edit'
+  get '/users/:id/edit', to: 'users#edit'
   get 'users/new' #, as: :new_user # @TODO what dat for
-  # match '/users/create' => 'users#create', via: :post
+  match '/users/:id/' => 'users#update', via: :patch, :as => :user
+  # patch '/users/:id/edit', controller: 'users', action: 'update'
+
   # post 'users' => 'users#create'
   post 'users/create'
+  # patch 'users/show'
 
-  resources :posts
+  resources :posts#, :users
 
 end
 

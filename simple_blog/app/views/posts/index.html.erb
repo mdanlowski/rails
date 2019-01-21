@@ -1,21 +1,23 @@
+<div class="WRAPPER">
 
-<p></p>
-<h1 class="text-center">👽</h1>
+	<!-- <h1 class="text-center">👽</h1> -->
 
-<% @posts.reverse_each do |p| %>
-<hr />
-<div class="post index-post">
-	<h3><%= p.title %></h3>
-	<p><%= simple_format(p.body) %></p>
-	<p class="text-right">Written by: <span class="index-username"><%= User.find(p.user_id).username %></span> at: 
-	<%= p.created_at %></p>
-	<% if p.created_at.to_s != p.updated_at.to_s %>
-		<p class="text-right"><sup>
-			Last edit: <%= p.updated_at %></p>
-		</sup></p>
-	<% end -%>
+	<% @posts.reverse_each do |p| %>
+	<hr />
+	<div class="post index-post">
+		<h3><%= p.title %></h3>
+		<!-- @TODO jakiś lepszy sposób na ograniczanie treści posta na głównej -->
+		<p><%= (p.body.length > 400) ? simple_format(p.body)[0,400]+'...'+simple_format(' <i>(click below for full content)</i>') : simple_format(p.body) %></p>
+		<sub><a class="" href="/posts/<%= p.id %>">See whole post / details...</a></sub>
+		<p class="text-right">Written by: <span class="index-username"><%= User.find(p.user_id).username %></span> at: 
+		<%= p.created_at %></p>
+		<% if p.created_at.to_s != p.updated_at.to_s %>
+			<p class="text-right"><sup>
+				Last edit: <%= p.updated_at %></p>
+			</sup></p>
+		<% end -%>
+	</div>
+	<% end %>
 
+	<!-- .gsub(/(?:\n\r?|\r\n?)/, '<br>') -->
 </div>
-<% end %>
-
-<!-- .gsub(/(?:\n\r?|\r\n?)/, '<br>') -->

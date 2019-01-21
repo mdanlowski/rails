@@ -1,46 +1,43 @@
 <header class="newpost-header">
-	<h1 class="text-center">Edit an existing Post</h1>
-<h1 class="text-center">_</h1>
-
-	<div class="errors">
-		<% if flash[:new_post_errors] %>
+	<h1 class="text-center">Edit an Existing Post</h1>
+</header>
+<div class="WRAPPER form-wrapper newpost-form anim-fade-in"> 
+	<div class="errors aside">
+		<% if flash[:edit_post_errors] %>
 		Please correct following:
 		<ul>
-			<% flash[:new_post_errors].each do |e| %>
+			<% flash[:edit_post_errors].each do |e| %>
 				<li> <%= e %> </li>
 			<% end %>
 		</ul>
 		<% end %>
 	</div>
 
-	<div class="text-center">
-		<%= form_for :post, url: { action: 'create' } do |p| %>
-			<div class="field post-title-field"> 
+	<div class="form-register text-center">
+		<%= form_for @post do |p| %>
+			<div class=""> 
 				<%= p.label :title %>
-				<%= p.text_field :title,  placeholder: 'Title of your post' %>
+				<%= p.text_field :title, placeholder: 'Title of your post', class: "form-control top-form-field post-title-field" %>
 			</div>
 
-			<div class="field post-body-field">
+			<div class="">
 				<%= p.label :body %>
-				<%= p.text_area :body, placeholder: 'The content of your post...' %>
+				<%= p.text_area :body, placeholder: 'The content of your post...', class: "form-control bottom-form-field post-body-field" %>
 			</div>
 
-			<div class="field post-attachment-field">
+			<div class="!not-implemented-yet post-attachment-field">
 				<%= p.label :attachments %>
 
 			</div>
 
 
-			<div class="post-finalize"> <%= p.submit "Submit the Post", class: "btn btn-success"%>
+			<div class="form-finalize"> <%= p.submit "Submit Changes", class: "btn-anim btn-drk anim-span"%>
 			</div>
 
 		<% end %>
-			<!-- <input type="file" name="attach"> -->
-		
 	</div>
+			<!-- <input type="file" name="attach"> -->
+</div>		
 
-</header>
 
 <h1 class="text-center">_</h1>
-
-<%  %>

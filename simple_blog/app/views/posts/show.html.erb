@@ -1,5 +1,43 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<header class="newpost-header">
+	<h1 class="text-center">Post Details</h1>
+</header>
+<div class="WRAPPER anim-fade-in <%= current_user ? (current_user.id == @post.user_id ? "post-details-grid" : '') : '' %>">
+	<div class="postdetails"> 
+	<h3><%= @post.title %></h3>
+		<div class="postbody">
+			<%= @post.body %>
+		</div>
 
-<p><%= @post.title %></p>
-<p><%= @post.body %></p>
+		<p class="postdata text-right">Author: <span class="index-username"><%= User.find(@post.user_id).username %></span></p>
+		<!-- @TODO see other posts bayy this author -->
+		<p class="postdata text-right">Date created:	<%= @post.created_at %></p>
+		<p class="postdata text-right">Date edited:	<%= @post.updated_at %></p>
+
+	</div>
+	<% if current_user && current_user.id == @post.user_id %>
+		<div class="postdetails owner-tools text-center">
+			<ul>
+				<!-- @TODO embed JS to copy/share -->
+				<li>
+					<input type="button" onclick="window.open(window.location+'/edit');" class="btn-anim btn-drk anim-span" type="button" name="test" value="Edit this Post"></li>
+				<li>
+					<a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="<%= post_path(@post) %>">
+					<button class="btn-anim btn-mid-drk anim-span">Delete this Post</button></a>
+				</li>
+				<li>
+					<hr /></li>
+				<li>
+					<input class="btn-anim btn-mid anim-span" type="button" name="test" value="Share"></li>
+				<li>
+					<input class="btn-anim btn-lite anim-span" type="button" name="test" value="Copy to Clipboard"></li>
+			</ul>
+		</div>
+	<% else %>
+	<div class="text-center viewer-tools">
+		<input class="btn-anim btn-mid anim-span" type="button" name="test" value="Share"><input class="btn-anim btn-lite anim-span" type="button" name="test" value="Copy to Clipboard">
+	</div>
+	<% end %>
+</div>		
+
+
+<h1 class="text-center">_</h1>

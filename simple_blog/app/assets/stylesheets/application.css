@@ -36,15 +36,15 @@ text
 /* Track */
 ::-webkit-scrollbar-track {
   /*background: #f1f1f1; */
-  background: #091534; 
+  background: #333; 
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #555; 
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #888; 
 }
 /*------------------end-scrollbar------------------------*/
 
@@ -62,28 +62,39 @@ hr {
 }
 
  #app {
- 	margin-right: 25%;
- 	margin-left: 25%;
+ 	/*margin-right: 10%;*/
+ 	/*margin-left: 10%;*/
  	/*background-color: azure;*/
+ }
 
+ .WRAPPER {
+ 	margin-right: 20%;
+ 	margin-left: 20%;
  }
 
 
 .n-a { /* notices / alerts */
 	text-align: center;
-	background-color: #678FFE;
 	font-weight: bold;
 	font-size: 16pt;
 	margin-bottom: 0px !important;
 }
 .notices {
+	background-color: #17a2b8;
 	color: #DBE5FF;
 }
 .alerts {
+	background-color: #17a2b8;
 	color: #091534;
 }
 
 /*----------------------navbar------------------------*/
+@media only screen and (max-width: 420px) {
+	.global-nav {
+		height: 200px !important;
+	}
+}
+
 .global-nav {
 	z-index: 100;
 	position: sticky;
@@ -171,6 +182,22 @@ hr {
 }
 /*------------------end-navbar------------------------*/
 
+@-webkit-keyframes masktrans {
+    0%   { background-color: rgba(9, 21, 52, 1); /* Google Chrome & Webkit Nightlies */}
+    100% { background-color: rgba(9, 21, 52, 0.5); /* Google Chrome & Webkit Nightlies */ }
+}
+@-webkit-keyframes transparency {
+    0%   { opacity: 0; /* Google Chrome & Webkit Nightlies */}
+    100% { opacity: 1; /* Google Chrome & Webkit Nightlies */ }
+}
+.anim-fade-in-header {
+	-webkit-animation: transparency 5s 1;
+	/*animation: transparency 2s 1;*/
+}
+.anim-fade-in-header-mask {
+	-webkit-animation: masktrans 6s 1;
+	/*animation: transparency 2s 1;*/
+}
 
 .homepage-header {
 	background: url(https://i.imgur.com/dCY0b8A.jpg);
@@ -180,7 +207,7 @@ hr {
 	max-height: 250px;
 }
 .blend {
-	background: rgba(9, 21, 52, 0.55);
+	background: rgba(9, 21, 52, 0.7);
 	max-height: 100%;
 	width: 100%;
 	padding: 4rem 2rem;
@@ -202,14 +229,3 @@ hr {
 	color: red;
 }
 
-.newpost-header {
-	margin: 0 0 0 -50% !important;
-	/*min-height: 100px;*/
-	background: #1E3471;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	/*background-size: cover;*/
-	width: 200% !important;
-	
-	/*max-height: 250px;*/
-}

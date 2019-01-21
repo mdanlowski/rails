@@ -1,13 +1,14 @@
 class User < ApplicationRecord
 
   # attr_accessible :password, :password_confirmation
-  # @TODO do sth about error message!
   has_secure_password
+  has_one_attached :photo
+  before_save { self.email = email.downcase }
 
   # validates :email
   validates :username, presence: true, uniqueness: true, length: { minimum: 4, maximum: 20 }
-  validates :password, :confirmation => true, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  validates :password, :confirmation => true, length: { minimum: 6 }, allow_nil: true
+  validates :password_confirmation, presence: true, allow_nil: true
 
   has_many :posts
 

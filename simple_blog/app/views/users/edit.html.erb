@@ -1,0 +1,38 @@
+<!-- <header class="dashboard-header">
+	<h1 class="text-center">Your Dashboard</h1>
+</header> -->
+
+<div class="dashboard-wrapper anim-fade-in">
+	<div class="dashboard-tile tl">
+		<hr />
+		<h4>Your Photo:</h4>
+		<%= form_for @user do |u| %>
+			<%= u.label :photo %>
+			<%= u.file_field :photo %>
+			<%= u.submit %>
+		<% end %> 
+
+<div class="errors">
+	<%= flash[:edit_user_errors] %>
+</div>
+
+		<div class="align-topdown">
+			<div class="!not-implemented-yet dashboard-img text-center">
+				<% if current_user.photo.attached? %>
+				<!-- <img class="img img-fluid rounded-circle" src="https://avatars0.githubusercontent.com/u/24384407?s=460&v=4"> -->
+				<%= image_tag current_user.photo %>
+				<% end %>
+			</div>
+			<!-- <hr /> -->
+			<div class="text-center">
+				<input class="btn-anim btn-drk anim-span" type="submit" name="test" value="Change">
+			</div>	
+		</div>
+	</div>
+
+</div>
+
+
+
+<h1 class="text-center">_</h1>
+

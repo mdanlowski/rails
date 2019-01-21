@@ -1,6 +1,6 @@
-<header class="form-wrapper newpost-header">
+<!-- <header class="dashboard-header">
 	<h1 class="text-center">Your Dashboard</h1>
-</header>
+</header> -->
 
 <div class="dashboard-wrapper anim-fade-in">
 	<div class="dashboard-tile tl">
@@ -8,8 +8,14 @@
 		<h4>Your Photo:</h4>
 		
 		<div class="align-topdown">
-			<div class="dashboard-img text-center">
-				<img class="img img-fluid rounded-circle" src="https://avatars0.githubusercontent.com/u/24384407?s=460&v=4">
+			<div class="!not-implemented-yet dashboard-img text-center">
+				<!-- <img class="img img-fluid rounded-circle" src="https://avatars0.githubusercontent.com/u/24384407?s=460&v=4"> -->
+				<% if current_user.photo.attached? %>
+					<%= image_tag current_user.photo, class: "img img-fluid rounded-circle" %>
+				<% else %>
+				 	<p>Not uploaded yet</p>
+
+				<% end %>
 			</div>
 			<!-- <hr /> -->
 			<div class="text-center">
@@ -28,7 +34,11 @@
 					<li>
 						<p>
 							- <a class="" href="/posts/<%= p.id %>">
-								<em><%= p.title %></em>
+								<% if p.title.length > 30 %>
+									<em><%= p.title[0,31]+'...' %></em>
+								<% else %>
+									<em><%= p.title%></em>
+								<% end %>
 							</a>
 						</p>
 						<p><sup><%= p.updated_at %></sup></p>
@@ -42,7 +52,7 @@
 		<!-- </div> -->
 	</div>	
 
-	<div class="dashboard-tile bl">
+	<div class="!not-implemented-yet dashboard-tile bl">
 		<hr />
 		<h4>Your Bio:</h4>
 
@@ -63,7 +73,7 @@
 		
 	</div>
 
-	<div class="dashboard-tile br">
+	<div class="!not-implemented-yet dashboard-tile br">
 		<hr />
 		<h4>Your friends:</h4>
 
