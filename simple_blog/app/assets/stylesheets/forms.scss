@@ -7,6 +7,13 @@
 
 }
 
+.form-backgound {
+	background: linear-gradient(0deg,#091534,transparent,rgba(9,21,52,0.8),#091534), url(https://i.imgur.com/dCY0b8A.jpg);
+	background-color: rgba(255,5,5,0.5);
+	background-size: cover;
+
+}
+
 .form-wrapper {
 	height: 100%;
 	display: flex;
@@ -19,7 +26,10 @@
 
 .field_with_errors {
 	color: red;
+}
 
+.form-login {
+	height: 450px;
 }
 
 .top-form-field  {
@@ -43,15 +53,12 @@
 }
 
 .form-register {
-	/*padding-top: 30px;*/
-	/*width: 100%;*/
 	margin: auto;
 }
 
 .form-register .form-control {
 	max-width: 320px;
 	width: 320px;
-	/*max-width: 100% !important;*/
 	position: relative;
 	box-sizing: border-box;
 	height: auto;

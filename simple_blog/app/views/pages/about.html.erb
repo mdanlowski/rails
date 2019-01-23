@@ -1,0 +1,47 @@
+
+<div class="WRAPPER about-page">
+	<div class="text-center">
+		<h3>This website is a simple <span class="rails-name">Ruby on Rails</span> exercise</h3>
+		<h1>_</h1>
+		<h4>What can it do?</h4>
+	</div>
+	<div class="text-justify">
+		
+	<ol>
+		<li>The system is based on two main data entities: Users and Posts (additional data items are user photos, which can be submitted after registration)</li>
+		<li>The site is built in the MVC framework</li>
+		<li>There are <em class="rails-name">Models</em>: User, Post and Session which orchestrate the exchange of data between the database and the client</li>
+		<li><em class="rails-name">Controllers</em> receive and control (duh!) the website traffic and user actions. There are Users-, Posts-, Sessions-, and Pages- Controllers. With the help of Models they pass along certain data items to the...</li>
+		<li><em class="rails-name">Views</em>, this is where the data is presented to the user</li>
+		<li>Only registered users can submit new posts</li>
+		<li>Upon registration, the Models validate input data and return errors if necessary</li>
+		<li>Users have a cool Dashboard where they can see a list of their posts (and access them quickly) as well as perform a password change and photo upload</li>
+		<li>Sessions Controller steers the login process</li>
+		<li>The Homepage displays posts from the newest to oldest</li>
+		<li>Each post can be opened in a detailed, individual view</li>
+		<li>The detailed view looks slightly different if we're logged in, because:</li>
+		<li>Logged-in users can delete and edit posts</li>
+		<li>The system does not use <em class="rails-name">Devise</em> (or any other) Gem for user registration, because after getting familiar with these tools, I am trying to get my head around more fundamental approach as well</li>
+		<li>I've leveraged <em class="rails-name">ActiveStorage</em> to make attachments possible</li>
+		<li>Later I have decided to add a simple voting system, thanks to that I could make Featured Posts section (10 posts with the most positive ratings)
+			<ul>
+				<li>Only registered users can rate posts</li>
+				<li>Posts and Users Controllers make sure that users don't rate their own posts and don't vote for certain posts more than once</li>
+				<li>The batch of posts is sorted by vote points through the controller before being rendered</li>
+			</ul>
+		</li>
+		<li>I've learned a lot while working on the views</li>
+		<li>About a quarter of Views are <em class="rails-name">Responsive</em> and I will work to get all of them like so</li>
+		<li>Plus there is this <em class="rails-name">minimalistic styling</em> that I'm quite proud of! (With a few animations and a bit of Space flavour - who doesn't like Space and animations!)</li>
+
+	</ol>
+	<p class="text-center">
+		Sure, there is still a lot to be done and couldev-been-done-better, and I know... Style code is a bit messy! (Views code maybe a little bit messy as well). Nevertheless I was having soooo much fun doing this exercise!
+	</p>
+	<p class="text-center rails-name">
+		<%= link_to "Please contact me if you find any bugs here!", pages_contact_path %>
+	</p>
+
+	</div>
+
+</div>

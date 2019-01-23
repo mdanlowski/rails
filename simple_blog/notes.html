@@ -1,3 +1,6 @@
+ActiveRecord::Base.connection.execute("BEGIN TRANSACTION; END;")
+
+
 	<p>
 		<%= u.label :password_confirmation %>
 		<br />
@@ -13,3 +16,6 @@
 <input class="btn-anim btn-mid-lite anim-span" type="submit" name="test" value="Submit the Post">
 <input class="btn-anim btn-lite anim-span" type="submit" name="test" value="Submit the Post">
 
+asset_path('glyphicons-halflings-regular.ttf')
+
+<%= link_to "Vote Up", '/posts/process_vote/<%= @post.id %>' %>

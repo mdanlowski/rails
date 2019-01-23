@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  serialize :voted_for
 
   # attr_accessible :password, :password_confirmation
   has_secure_password
@@ -8,7 +9,7 @@ class User < ApplicationRecord
   # validates :email
   validates :username, presence: true, uniqueness: true, length: { minimum: 4, maximum: 20 }
   validates :password, :confirmation => true, length: { minimum: 6 }, allow_nil: true
-  validates :password_confirmation, presence: true, allow_nil: true
+  # validates :password_confirmation, presence: true
 
   has_many :posts
 

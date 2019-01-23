@@ -1,0 +1,69 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$bd: #091534;
+$bmd: #1E3471;
+$bm: #213B82;
+$bml: #17a2b8;
+/*$bml: #D4EDF7;*/
+$bl: #7eacdc;
+$bt: #DBE5FF;
+$bpbg: rgba(30,52,113, 0.35);
+@font-face {
+    font-family: "hitech";
+    src: url(font_path("OCR_A_Std.ttf"));
+}
+
+.rails-name {
+	color: crimson;
+	font-weight: bold;
+}
+
+.contact-page, .about-page {
+	margin-top: 10px;
+	padding: 20px 20px 5vh 20px;
+
+}
+
+.about-page {
+	background: $bpbg;
+	height: 1000px;
+}
+
+.contact-page-icon {
+	color: $bt;
+	display: inline-block;
+	min-width: 25%;
+	min-height: 25%;
+	max-width: 35%;
+	max-height: 35%;
+	font-size: 8em;
+	--webkit-transition: color 1s;
+	transition: color 1s;
+
+	i.fa-linkedin-in:hover{
+		color: dodgerblue;
+		--webkit-transition: color 0.5s;
+		transition: color 0.5s;
+		cursor: pointer;
+	}
+	i.fa-github:hover{
+		color: #444;
+		--webkit-transition: color 0.5s;
+		transition: color 0.5s;
+		cursor: pointer;
+
+	}
+	i.fa-github.io:hover{
+		color: crimson;
+		--webkit-transition: color 0.5s;
+		transition: color 0.5s;
+		cursor: pointer;
+
+	}
+	.dotio {
+		font-size: 18pt !important;
+		font-family: "hitech";
+	}
+
+}

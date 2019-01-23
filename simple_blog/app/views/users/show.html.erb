@@ -14,12 +14,13 @@
 					<%= image_tag current_user.photo, class: "img img-fluid rounded-circle" %>
 				<% else %>
 				 	<p>Not uploaded yet</p>
-
 				<% end %>
 			</div>
 			<!-- <hr /> -->
 			<div class="text-center">
-				<input class="btn-anim btn-drk anim-span" type="submit" name="test" value="Change">
+				<a href="/users/<%= current_user.id %>/edit">
+					<button class="btn-anim btn-drk anim-span" type="button">Settings</button>
+				</a>
 			</div>	
 		</div>
 	</div>
@@ -55,7 +56,7 @@
 	<div class="!not-implemented-yet dashboard-tile bl">
 		<hr />
 		<h4>Your Bio:</h4>
-
+		<strong>/not-implemented-yet/</strong>
 		<div class="align-topdown ">
 			<div class="dashboard-bio text-center">
 				
@@ -78,6 +79,7 @@
 		<h4>Your friends:</h4>
 
 		Do you have any?
+		<strong>/not-implemented-yet/</strong>
 		
 	</div>
 

@@ -2,15 +2,17 @@
   <!-- <div id="nav-widescreen"> -->
 	<ul class="to-left nav-list">
 		<li class="nav-item"><%= link_to_unless_current "Home", root_path %></li>
-		<li class="nav-item"><%= link_to_unless_current "Featured Posts", root_path+'404' %></li>
-		<li class="nav-item"><%= link_to_unless_current "About this Blog", root_path+'422' %></li>
-		<li class="nav-item"><%= link_to_unless_current "Contact Us", root_path+'500' %> </li>
+		<li class="nav-item featured"><%= link_to_unless_current "Featured Posts", posts_featured_path %></li>
+		<li class="nav-item"><%= link_to_unless_current "About this Blog", pages_about_path %></li>
+		<li class="nav-item"><%= link_to_unless_current "Contact Me", pages_contact_path %> </li>
 
 	</ul>
 		<!-- <div class="to-right"> -->
 			<ul class="to-right nav-list">
 			  <% if current_user %>
-			  	<span class="nav-username">Logged in as: <em><%= current_user.username %></em></span>
+			  	<span class="nav-username">
+			  		Logged in as: <em class="index-username"><%= current_user.username %></em>
+			  	</span>
 				<li class="nav-item nav-special"><%= link_to_unless_current "New Post", { controller: 'posts', action: 'new' } %></li>
 				<li class="nav-item"><%= link_to_unless_current "Dashboard", { controller: 'users', action: 'show' } %></li>
 				<li class="nav-item"><%= link_to_unless_current "Logout", sessions_destroy_path, method: :delete %></li>

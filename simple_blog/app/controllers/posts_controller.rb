@@ -1,19 +1,30 @@
 class PostsController < ApplicationController
 
   before_action :authorize, only: [:new, :edit]
+  # before_action :voted?, only: [:show]
 
   def index
-    @render_header = true
+    # @render_header = true
+    @header_text = "The Simple Blog Project"
     @posts = Post.all
 
   end
 
   def show
     @post = Post.find(params[:id])
+    @voted = current_user.voted_for.include?(params[:id].to_i) if current_user
   end
 
   def new
-    @render_header = false
+    # @render_header = false
+  end
+
+  def featured
+    # @render_header = true
+    @header_text = "Top Ten Posts"
+    @posts = Post.all.sort_by(&:vote_points).reverse[0..10]
+    @voted = current_user.voted_for.include?(params[:id].to_i) if current_user
+
   end
 
   def create
@@ -59,9 +70,41 @@ class PostsController < ApplicationController
     end
   end
 
-  private
-    def new_post_params
-      params.require(:post).permit(:title, :body)
-      
+  #
+  def process_vote
+    # a bit of security:
+    @post = Post.find(params[:id])
+    if current_user and @post.user_id != current_user.id and not current_user.voted_for.include?(@post.id)
+      @post.vote_points += params[:vote_value].to_i
+      @post.save
+      u = current_user
+      u.voted_for.push(@post.id)
+      u.save
+      flash[:notice] = 'Thanks for your vote!'
+      # redirect_to post_path
+      redirect_back(fallback_location: root_path)
+
+    elsif @post.user_id == current_user.id
+      flash[:alert] = 'You cannot rate your own post.'
+      # redirect_to post_path
+      redirect_back(fallback_location: root_path)
+        
+    elsif current_user.voted_for.include?(@post.id)
+      flash[:alert] = 'You have already voted for this post.'
+      # redirect_to post_path
+      redirect_back(fallback_location: root_path)
+
+    else
+      flash[:alert] = 'Only registered users can rate posts.'
+      # redirect_to post_path
+      redirect_back(fallback_location: root_path)
+
     end
+  end
+
+  private def new_post_params
+      params.require(:post).permit(:title, :body)
+  end
+
+  
 end

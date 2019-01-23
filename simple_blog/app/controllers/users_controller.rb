@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   before_action :authorize, only: [:show]
 
   def new
-    @render_header = true
+    # @header_text = "The Simple Blog Project"
 
     # @user = User.new
   	# flash[:reg_errors] = ['ayylmao']
@@ -19,10 +19,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @render_header = true
-
   	user = User.new(user_register_params)
     # render plain: params[:user].inspect
+    user.voted_for = []
   	if user.save
         session[:user_id] = user.id
   		# puts session[:user_id], @user.id
@@ -38,7 +37,6 @@ class UsersController < ApplicationController
 
   def show
     # @user = User.find(params[:id])
-    @render_header = false
     @current_user_posts = current_user.posts.all
 
   	# @user = current_user
@@ -50,8 +48,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_edit_photo)
-      flash[:notice] = 'Data updated successfully.'
+    if @user.update_attributes(user_edit_params)
+      flash[:notice] = 'Update successful.'
       redirect_to users_show_path
     else
       flash[:edit_user_errors] = @user.errors.full_messages
@@ -63,8 +61,9 @@ class UsersController < ApplicationController
   private def user_register_params
   		params.require(:user).permit(:email, :username, :password, :password_confirmation)
   	end
-  private def user_edit_photo
-      params.require(:user).permit(:photo)
+  private def user_edit_params
+      # params.require(:user).permit(:photo, :password, :password_confirmation)
+      params.require(:user).permit(:photo, :password, :password_confirmation)
     end
 
 end

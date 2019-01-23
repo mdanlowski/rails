@@ -8,6 +8,13 @@ palest
 text
 	#DBE5FF
 */
+$bd: #091534;
+$bmd: #1E3471;
+$bm: #213B82;
+$bml: #17a2b8;
+/*$bml: #D4EDF7;*/
+$bl: #7eacdc;
+$bt: #DBE5FF;
 
 .btn-anim {
 	border-top: none;
@@ -16,7 +23,18 @@ text
 	border-bottom: 0px solid #213B82;
 	height: 40px;
 	width: 140px;
-	color: white;
+	color: $bt;
+	cursor: pointer;
+
+	-webkit-transition: width 0.5s, border 0.5s; /* Safari */
+  	transition: width 0.5s, border 0.5s;
+}
+
+.btn-anim-vote {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
 	cursor: pointer;
 
 	-webkit-transition: width 0.5s, border 0.5s; /* Safari */
@@ -53,6 +71,34 @@ text
 	background-color: #7eacdc;
 	color: #091534;
 }
+
+.btn-voteup {
+	font-size: 2em;
+
+	line-height: 1px;
+
+	height: 40px;
+	width: 40px;
+}
+
+.btn-votedown {
+	font-size: 2em;
+
+	line-height: 1px;
+	
+	height: 40px;
+	width: 40px;
+	
+}
+.btn-voteup:hover {
+		background: #1bb76e;
+		border-bottom: 6px solid #1bA06e !important;
+}
+.btn-votedown:hover {
+		background: #830d1d;
+		border-bottom: 6px solid #750d1d !important;
+}
+
 
 .anim-span:hover {
 	width: 100% !important;

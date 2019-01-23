@@ -53,6 +53,7 @@ body.body {
 	width: 100%;
 	background-color: #091534;
 	color: #DBE5FF;
+	margin-bottom: 30px;
 }
 
 hr {
@@ -65,6 +66,8 @@ hr {
  	/*margin-right: 10%;*/
  	/*margin-left: 10%;*/
  	/*background-color: azure;*/
+	margin-bottom: 20px;
+
  }
 
  .WRAPPER {
@@ -109,6 +112,9 @@ hr {
 	color: #DBE5FF;
 	font-weight: bold;
 	/*padding-top: 0.9em;*/
+	border-bottom: 0px solid #091534;
+	-webkit-transition: border 0.5s; /* Safari */
+  	transition: border 0.5s;
 }
 /* @TODO add media qrs bcuz it melts on small scr sizes*/
 .to-left {
@@ -169,7 +175,13 @@ hr {
 .nav-special a {
 	text-decoration-line: underline !important;
 }
+.featured a:hover {
+	background: #830d1d;
+	border-bottom: 6px solid #750d1d;
+}
 .nav-username {
+	/*margin-left: -150px !important;*/
+	/*margin-top: -10px !important;*/
 	padding-right: 40px !important;
 	font-weight: normal !important;
 }
@@ -178,6 +190,10 @@ hr {
 	.nav-widescreen {
 		padding-right: 20%;
 		padding-left: 20%;
+	}
+	.WRAPPER {
+		margin-right: 25%;
+		margin-left: 25%;
 	}
 }
 /*------------------end-navbar------------------------*/
@@ -200,7 +216,7 @@ hr {
 }
 
 .homepage-header {
-	background: url(https://i.imgur.com/dCY0b8A.jpg);
+	background: linear-gradient(0deg,#091534,transparent,#091534),url(https://i.imgur.com/dCY0b8A.jpg);
 	background-size: cover;
 	max-width: 100%;
 	min-height: 100px;
@@ -225,7 +241,9 @@ hr {
 
 
 .errors {
-	padding-top: 30px;
+	padding: 1em;
 	color: red;
+	font-weight: bold;
+	/*background: rgba(9,21,52, 0.8);*/
 }
 

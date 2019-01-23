@@ -5,29 +5,43 @@
 <div class="dashboard-wrapper anim-fade-in">
 	<div class="dashboard-tile tl">
 		<hr />
-		<h4>Your Photo:</h4>
+
+		<div class="errors">
+			<% if flash[:edit_user_errors] %>
+			<ul>
+			<% flash[:edit_user_errors].each do |e| %>
+				<li> <%= e %> </li>
+			<% end %>
+			</ul>
+		<% end %>
+		</div>
+			
 		<%= form_for @user do |u| %>
-			<%= u.label :photo %>
-			<%= u.file_field :photo %>
-			<%= u.submit %>
+		<div class="align-topdown">
+		
+			<p>
+				<h4>Your Photo:</h4>
+				<%= u.label :photo %>
+				<%= u.file_field :photo, class: "form-control-file" %>
+			</p>
+			<p></p>
+			<p>
+				<h4>Change Password:</h4>
+				<div class="form-register">
+					<%= u.label :password %>
+					<%= u.password_field :password, placeholder: 'New password (min. 6 characters)', class: "top-form-field form-control" %>
+					<%= u.label :password_confirmation %>
+					<%= u.password_field :password_confirmation, placeholder: 'Retype the password', class: "form-control bottom-form-field" %>
+				</div>
+			</p>
+			<p class="text-center">	
+				<%= u.submit "Update", class: "btn-anim btn-drk anim-span" %>
+			</p>
+			
+		</div>
 		<% end %> 
 
-<div class="errors">
-	<%= flash[:edit_user_errors] %>
-</div>
 
-		<div class="align-topdown">
-			<div class="!not-implemented-yet dashboard-img text-center">
-				<% if current_user.photo.attached? %>
-				<!-- <img class="img img-fluid rounded-circle" src="https://avatars0.githubusercontent.com/u/24384407?s=460&v=4"> -->
-				<%= image_tag current_user.photo %>
-				<% end %>
-			</div>
-			<!-- <hr /> -->
-			<div class="text-center">
-				<input class="btn-anim btn-drk anim-span" type="submit" name="test" value="Change">
-			</div>	
-		</div>
 	</div>
 
 </div>

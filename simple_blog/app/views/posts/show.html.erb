@@ -1,17 +1,59 @@
+<!-- @TODO turn into partial -->
+
+<% def rate_post(id)
+	if id > 0
+		return 'up'
+	elsif id == 0
+		return 'neutral'
+	else
+		return 'down'
+	end
+end
+%>
+
 <header class="newpost-header">
 	<h1 class="text-center">Post Details</h1>
 </header>
 <div class="WRAPPER anim-fade-in <%= current_user ? (current_user.id == @post.user_id ? "post-details-grid" : '') : '' %>">
 	<div class="postdetails"> 
-	<h3><%= @post.title %></h3>
+		<div class="titlebar">
+			<h3><%= @post.title %></h3>
+
+			<div class="postvotes text-right">
+			<% if current_user %>
+				<% if @voted %>
+					<p class="thanksforvote">Thank you for your vote</p>
+				<% end %>
+
+				<a rel="nofollow" href="/posts/process_vote/<%= @post.id.to_s %>/1" data-method="patch" >
+					<button class="btn-anim btn-voteup btn-mid <%= @voted ? 'votingdisabled' : '' %>">&#128402;</button>
+				</a>
+				<a rel="nofollow" href="/posts/process_vote/<%= @post.id.to_s %>/-1" data-method="patch" >
+					<button class="btn-anim btn-votedown btn-mid <%= @voted ? 'votingdisabled' : '' %>">&#128403;</button>
+				</a>
+			<% else %>
+				<p class="registertovote">Register to rate posts</p>
+			<% end %>
+			<div class="postrating <%= rate_post(@post.vote_points) %>">
+				<%= @post.vote_points.to_s %>
+			</div>
+			</div>
+
+		</div>
+	  <div class="flexgroup">
+	  	
 		<div class="postbody">
-			<%= @post.body %>
+			<%= simple_format(@post.body) %>
 		</div>
 
-		<p class="postdata text-right">Author: <span class="index-username"><%= User.find(@post.user_id).username %></span></p>
-		<!-- @TODO see other posts bayy this author -->
-		<p class="postdata text-right">Date created:	<%= @post.created_at %></p>
-		<p class="postdata text-right">Date edited:	<%= @post.updated_at %></p>
+		<div class="postdata">
+			<p class="text-right">Author: <span class="index-username"><%= User.find(@post.user_id).username %></span></p>
+			<!-- @TODO see other posts bayy this author -->
+			<p class="text-right">Date created:	<%= @post.created_at %></p>
+			<p class="text-right">Date edited:	<%= @post.updated_at %></p>
+
+		</div>
+	  </div>
 
 	</div>
 	<% if current_user && current_user.id == @post.user_id %>
@@ -19,7 +61,7 @@
 			<ul>
 				<!-- @TODO embed JS to copy/share -->
 				<li>
-					<input type="button" onclick="window.open(window.location+'/edit');" class="btn-anim btn-drk anim-span" type="button" name="test" value="Edit this Post"></li>
+					<input type="button" onclick="window.open(window.location+'/edit');" class="btn-anim btn-drk anim-span" type="button" name="post[edit]" value="Edit this Post"></li>
 				<li>
 					<a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="<%= post_path(@post) %>">
 					<button class="btn-anim btn-mid-drk anim-span">Delete this Post</button></a>
@@ -27,17 +69,16 @@
 				<li>
 					<hr /></li>
 				<li>
-					<input class="btn-anim btn-mid anim-span" type="button" name="test" value="Share"></li>
+					<input onclick="alert('This feature is not yet implemented.')" class="btn-anim btn-mid anim-span" type="button" name="post[share]" value="Share"></li>
 				<li>
-					<input class="btn-anim btn-lite anim-span" type="button" name="test" value="Copy to Clipboard"></li>
+					<input onclick="copyToClipboard('.postbody', event)" class="btn-anim btn-lite anim-span" type="button" name="post[copy]" value="Copy to Clipboard"></li>
 			</ul>
 		</div>
 	<% else %>
 	<div class="text-center viewer-tools">
-		<input class="btn-anim btn-mid anim-span" type="button" name="test" value="Share"><input class="btn-anim btn-lite anim-span" type="button" name="test" value="Copy to Clipboard">
+		<input onclick="alert('This feature is not yet implemented.')" class="btn-anim btn-mid anim-span" type="button" name="test" value="Share"><input onclick="copyToClipboard('.postbody', event)" class="btn-anim btn-lite anim-span" type="button" name="test" value="Copy to Clipboard">
 	</div>
 	<% end %>
 </div>		
 
 
-<h1 class="text-center">_</h1>

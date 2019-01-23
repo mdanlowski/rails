@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
 
   def new
-    @render_header = true
+    # @header_text = "The Simple Blog Project"
   	
     # flash[:login_errors] = ['ayylmao']
     if current_user

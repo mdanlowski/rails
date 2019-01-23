@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+<div class="WRAPPER contact-page">
+	<div class="text-center">
+		<!-- <h4>Reach out to me at:</h4> -->
+
+		<div class="contact-page-icon">
+				<i 
+				onmouseenter="setTextToLinkAddr('linkedin.com/in/');" 
+				onmouseleave="resetText()"
+				onclick="window.open('https://linkedin.com/in/mdanlowski');" class="fab fa-linkedin-in"></i>
+		</div>
+
+		<div class="contact-page-icon">
+				<i
+				onmouseenter="setTextToLinkAddr('github.com/');"
+				onmouseleave="resetText()"
+				onclick="window.open('https://github.com/mdanlowski');" class="fab fa-github"></i>
+
+		</div>
+
+		<div class="contact-page-icon">
+				<i
+				onmouseenter="setTextToLinkAddr('github.io');"
+				onmouseleave="resetText()"
+				onclick="window.open('https://mdanlowski.github.io');" class="fab fa-github io"><span class="dotio">.io</span></i>
+		</div>
+
+	</div>
+	<!-- <hr /> -->
+</div>
+
+<div class="text-center addr-placeholder">
+	>_
+</div>
+
+<!-- <h1 class="text-center">_</h1> -->
+
+<script type="text/javascript">
+	var m = 'mdanlowski';
+	var a = document.querySelector('.addr-placeholder');
+	function setTextToLinkAddr(site) {
+		if(site == 'github.io') {
+			a.innerHTML = 'Open  <em> ' + m + '.' + site + ' </em> in new tab';
+			a.querySelector('em').style.color = "crimson";
+		}
+		else {
+			a.innerHTML = 'Open <em> ' + site + m + ' </em> in new tab'
+			a.querySelector('em').style.color = "dodgerblue";
+		}
+	}
+	function resetText() {
+		a.innerHTML = '>_';
+	}
+	// setInterval(function(){
+	// 	a.innerHTML = '_';
+	// }, 500);
+	// setInterval(function(){
+	// 	a.innerHTML = '';
+	// }, 1000);
+</script>

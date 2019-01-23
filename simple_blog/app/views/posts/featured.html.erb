@@ -1,3 +1,5 @@
+<!-- @TODO turn into partial -->
+
 <% def rate_post(id)
 	if id > 0
 		return 'up'
@@ -9,10 +11,10 @@
 end
 %>
 <div class="WRAPPER">
-	<!-- <h5></h5> -->
-	<!-- <h1 class="text-center">👽</h1> -->
+	<!-- <h5 class="text-center test"></h5> -->
+	<!-- <h1 class="text-center test">👽</h1> -->
 
-	<% @posts.reverse_each do |p| %>
+	<% @posts.each do |p| %>
 	<!-- <hr /> -->
 		<div class="post index-post">
 			<div class="titlebar">
