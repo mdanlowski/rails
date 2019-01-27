@@ -36,8 +36,8 @@
 // 	}
 // });
 
-const copyToClipboard = (obj, event) => {
-  const el = document.createElement('textarea');
+var copyToClipboard = (obj, event) => {
+  var el = document.createElement('textarea');
   el.value = document.querySelector(obj).innerText;
   el.setAttribute('readonly', '');
   el.style.position = 'absolute';

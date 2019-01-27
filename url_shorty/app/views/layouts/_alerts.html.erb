@@ -1,0 +1,12 @@
+<% if alert %>
+    <div class="alert"><%= alert %></div>
+<% elsif notice %>
+    <div class="notice">
+        <%= notice %>
+        <div>You can share the following link:</div>
+        <div>
+            <a href="<%= flash[:newly_created_redir] %>"> <%= flash[:newly_created_redir] %> </a>
+        </div>
+
+    </div>
+<% end %>

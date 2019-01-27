@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    puts params
   	user = User.new(user_register_params)
     # render plain: params[:user].inspect
     user.voted_for = []

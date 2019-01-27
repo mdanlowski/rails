@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from: MyString
+  hashed: MyString
+  visited: 1
+  last_visited: 2019-01-27 12:14:50
+
+two:
+  from: MyString
+  hashed: MyString
+  visited: 1
+  last_visited: 2019-01-27 12:14:50

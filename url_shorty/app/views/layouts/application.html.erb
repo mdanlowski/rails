@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UrlShorty</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+  </head>
+
+  <body>
+    <%= render 'layouts/alerts' %>
+    <header class="jumbotron text-center">
+      <h1>GetMeThere</h1>
+      <p>Pass us dat url, we gonna make it tineh</p>
+    </header>
+
+    <%= yield %>
+    
+  </body>
+</html>
