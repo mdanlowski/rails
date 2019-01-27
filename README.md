@@ -5,7 +5,7 @@ Ruby on Rails practice
 
 - Fully functional blog with users and posts - users can add avatars, edit posts, share and more
 - Frontend style with use of Sass and a bit of JS
-- avatars with use of Active Storage (only works locally ?)
+- avatars with use of Active Storage (deployed with GCS - http://rails-blog-md.herokuapp.com )
 
 
 ## react-rails
