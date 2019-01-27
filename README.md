@@ -13,6 +13,11 @@ Ruby on Rails practice
 - learning to integrate Rails, Node and ReactJS
 
 
+## url_shorty
+
+- building a url shorten-er app
+
+
 ## Proto 
 
 - add and display anonymous qoutes with pagination **[finished]**
