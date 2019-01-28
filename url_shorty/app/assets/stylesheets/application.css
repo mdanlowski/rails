@@ -14,14 +14,21 @@
  *= require_self
  */
 
- body {
-     background-color: #E8E8F3 !important; 
-     color: #252588 !important;
-    }
+body {
+     background-color: aliceblue !important; 
+     color: black !important;
+
+}
+
+.main {
+    max-width: 420px;
+    margin: auto;
+    background-color: lightgrey;
+}
     
 .jumbotron {
-    background-color: #A9A9D1 !important; 
-    max-height: 250px !important;
+    background-color: gray !important; 
+    max-height: 200px !important;
 }
     
 a {

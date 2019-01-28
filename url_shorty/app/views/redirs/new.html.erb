@@ -1,15 +1,18 @@
-<div class="container container-fluid">
-    <div class="form">
-        <%= form_for :redir, url: {action: 'create'} do |r| %>
-        <p class="text-center"> <%= r.label "Put a link below or just click if copied" %> </p>
-        <p> <%= r.text_field :from, class: 'form-control', onfocus: "autoPaste(this, event);" %> </p>
-        <p> <%= r.submit "Add link", class: 'form-control btn btn-primary' %> </p>
-        <% end %>
-        
-        <h1 class="text-center">___</h1>
-        
+<main class="main"> 
+    <div class="container container-fluid">
+        <div class="form">
+            <%= form_for :redir, url: {action: 'create'} do |r| %>
+            <p class="text-center"> <%= r.label "Put a link below or just click if copied" %> </p>
+            <p> <%= r.text_field :from, class: 'form-control', onfocus: "autoPaste(this, event);" %> </p>
+            <p> <%= r.submit "Add link", class: 'form-control btn btn-primary' %> </p>
+            <% end %>
+            
+            <h1 class="text-center">___</h1>
+            
+        </div>
     </div>
-</div>
+</main>
+
 <!-- @TODO paginate with Ajax  -->
 <div class="recent-links">
     <h4>Added recently:</h4>
