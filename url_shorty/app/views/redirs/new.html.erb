@@ -1,10 +1,16 @@
 <main class="main"> 
+
+    <header class="text-center">
+      <h1>GetMeThere</h1>
+      <p>Pass us dat url, we're gonna make it tineh!</p>
+    </header>
+
     <div class="container container-fluid">
         <div class="form">
             <%= form_for :redir, url: {action: 'create'} do |r| %>
             <p class="text-center"> <%= r.label "Put a link below or just click if copied" %> </p>
             <p> <%= r.text_field :from, class: 'form-control', onfocus: "autoPaste(this, event);" %> </p>
-            <p> <%= r.submit "Add link", class: 'form-control btn btn-primary' %> </p>
+            <p> <%= r.submit "Add link", class: 'form-control btn btn-dark' %> </p>
             <% end %>
             
             <h1 class="text-center">___</h1>
@@ -18,7 +24,7 @@
     <h4>Added recently:</h4>
     <ul>
         <% @all_links.each do |l| %>
-        <li> <a href="/<%= l.id.to_s %>"> <%= l.from.to_s %> </a></li>
+        <li> <a href="/<%= l.id.to_s %>"> <%= l.from.to_s %> <-- <%= root_url + l.id.to_s %> </a></li>
         <% end %>
     </ul>
 
@@ -27,6 +33,8 @@
 <!-- @TODO or display 30 links per page in 3 columns - on moblie cols align vertically  -->
     
 </div>
+<% if @all_links.count > 10 %>
 <div class="text-center">
     Pages: <%= will_paginate @all_links, class: 'text-center' %>
 </p>
+<% end %>

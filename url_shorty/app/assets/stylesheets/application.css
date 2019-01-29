@@ -15,24 +15,29 @@
  */
 
 body {
-     background-color: aliceblue !important; 
-     color: black !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: linear-gradient(.25turn, crimson, darkorange);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
 }
 
 .main {
-    max-width: 420px;
+    max-width: 450px;
     margin: auto;
-    background-color: lightgrey;
-}
-    
-.jumbotron {
-    background-color: gray !important; 
-    max-height: 200px !important;
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
 }
     
 a {
-    color: #09097C !important;
+    color: black !important;
+}
+
+h1 {
+    margin-bottom: 0px !important;
 }
 
 .form {
@@ -42,17 +47,22 @@ a {
 
 .alert, .notice {
     /* height: 100px; */
-    background-color: #A9A9D1;
+    background-color: black;
     text-align: center;
     font-weight: bold;
     color: crimson;
     margin-bottom: 0px !important;
 }
 .notice {
-    color: dodgerblue !important;
+    color: yellow !important;
+}
+.notice a {
+    color: darkorange !important;
 }
 
 .recent-links {
-    margin-left: 20%;
-    font-size: 0.75em;
+    margin-left: auto;
+    margin-right:  auto;
+    font-size: 0.8em;
+    max-width: 30%;
 }
