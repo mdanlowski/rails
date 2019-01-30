@@ -1,5 +1,8 @@
 <% if alert %>
-    <div class="alert"><%= alert %></div>
+    <div class="alert">
+		<%= alert.length > 1 ? 'Link was empty or invalid' : 'Link format was invalid' %>
+			
+	</div>
 <% elsif notice %>
     <div class="notice">
         <%= notice %>
