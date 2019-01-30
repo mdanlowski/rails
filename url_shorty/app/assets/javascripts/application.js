@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
@@ -18,3 +19,12 @@
 function autoPaste(obj){
     navigator.clipboard.readText().then(text => obj.value = text);
 }
+
+$( function(){
+
+  // var nextPage = $("a[rel=prev]");
+  // var type = document.createAttribute("data-remote");
+  // type.value = "true";
+  // nextPage[0].attributes.setNamedItem(type);
+
+})

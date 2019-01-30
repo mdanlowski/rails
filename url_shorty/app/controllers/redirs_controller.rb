@@ -8,10 +8,15 @@ class RedirsController < ApplicationController
     #@TODO add a layer of validation where Ruby goes to the url to check if it returns anyth. or Python
     if rdr.save
       # redirect_to '/redirs/track/' + rdr.id.to_s
-      redirect_to root_path
-      flash[:notice] = "Shorty created!"
-      flash[:newly_created_redir] =  root_url.to_s + rdr.id.to_s
-
+      respond_to do |format|
+        format.html {
+          redirect_to root_path
+          flash[:notice] = "Shorty created!"
+          flash[:newly_created_redir] =  root_url.to_s + rdr.id.to_s
+          }
+        format.js
+      end
+            
     else
       flash[:alert] = rdr.errors.full_messages
       redirect_to root_path

@@ -1,7 +1,7 @@
 <main class="main"> 
     <div class="container container-fluid">
         <div class="form">
-            <%= form_for :redir, url: {action: 'create'} do |r| %>
+            <%= form_for :redir, remote: true, url: {action: 'create'} do |r| %>
             <p class="text-center"> <%= r.label "Put a link below or just click if copied" %> </p>
             <p> <%= r.text_field :from, class: 'form-control', onfocus: "autoPaste(this, event);" %> </p>
             <p> <%= r.submit "Add link", class: 'form-control btn btn-primary' %> </p>
@@ -20,13 +20,12 @@
         <% @all_links.each do |l| %>
         <li> <a href="/<%= l.id.to_s %>"> <%= l.from.to_s %> </a></li>
         <% end %>
+
     </ul>
 
-
-
 <!-- @TODO or display 30 links per page in 3 columns - on moblie cols align vertically  -->
-    
+<div class="text-center pagination">
+Pages: <%= will_paginate @all_links, class: 'text-center' %>
+</div>    
+
 </div>
-<div class="text-center">
-    Pages: <%= will_paginate @all_links, class: 'text-center' %>
-</p>
