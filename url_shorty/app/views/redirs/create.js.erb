@@ -1,0 +1,29 @@
+$(function() {
+	var ln = '<%= j Redir.last.id.to_s %>';
+	var tx = '<%= j Redir.last.from.to_s %>';
+	var pageCount = '<%= j Redir.count.to_s %>';
+	pageCount = Math.round(parseInt(pageCount)/10);
+
+	var locWithoutPgNum = location.toString().length;
+	locWithoutPgNum = location.toString().substr(0,locWithoutPgNum-1)
+
+	// Append a new link to the list
+	$('.recent-links ul').append('<li><a href="/'+ln+'">'+tx+'</a></li>');
+
+	// If list has more than ten items, automatically go to the next page
+	// @TODO - issue!!! HAVE TO DISPLAY THE SHORT LINK FOR THE USER AT SOME POINT - WAS IN :NOTICE
+	if($('ul').children().length > 10){
+		pageCount++;
+		if( location.toString().includes('page') ){
+			location.replace(locWithoutPgNum + pageCount.toString());
+		}
+		else {
+			location.replace(location.toString()+'?page=' + pageCount.toString());
+		}
+		// location.reload();
+	}
+
+
+
+});
+
