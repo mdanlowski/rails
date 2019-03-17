@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<% @test.each do |sub| %>
+  <h1 style="text-align: center; font-size: 40px;"><%= "Your channel: #{sub.channel.title}" %></h1>
+  
+  <% sub.channel.items.first(2).each do |item| %>
+  <article class="article"> 
+    <p class="feed-article-title"> <h2><%= item.title %></h2> </p>
+    <p> <%= item.link %> </p>
+    <p> <%= simple_format(item.description) %> </p>
+  </article>
+  <% end %>
+<% end %>
+
+
+<%= link_to 'Edit', edit_feed_path(@feed) %> |
+<%= link_to 'Back', feeds_path %>
+
+<!-- 
+  channel
+    title
+    link
+    description
+
+    item(s)
+      title
+      link
+      description
+
+ -->
