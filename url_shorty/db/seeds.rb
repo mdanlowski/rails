@@ -6,9 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Redir.destroy_all
-puts 'purge all data done'
-Redir.create({from: "google.pl"})
-Redir.create({from: "facebook.com"})
-Redir.create({from: "letussellyourpersonaldata.net"})
-Redir.create({from: "ayy.lmao/not-a-website-prolly"})
-puts 'seeds done'
+# puts 'purge all data done'
+# puts 'seeds done'

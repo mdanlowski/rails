@@ -21,10 +21,10 @@ function autoPaste(obj){
 }
 
 $( function(){
+  // trim some whitespace
+  $("input[type='submit']").on("mouseenter", function(){
+    // console.log( ($("#redir_source").val()).replace(/(^\s+|\s+$)/g,'') );
+    $("#redir_source").val( ($("#redir_source").val()).replace(/(^\s+|\s+$)/g,'') );
+  });
 
-  // var nextPage = $("a[rel=prev]");
-  // var type = document.createAttribute("data-remote");
-  // type.value = "true";
-  // nextPage[0].attributes.setNamedItem(type);
-
-})
+});

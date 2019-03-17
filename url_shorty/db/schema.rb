@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_01_27_111450) do
 
   create_table "redirs", force: :cascade do |t|
-    t.string "from"
+    t.string "source"
     t.string "hashed"
     t.integer "visited"
     t.datetime "last_visited"

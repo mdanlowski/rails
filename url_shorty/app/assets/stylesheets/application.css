@@ -25,13 +25,20 @@ body {
 }
 
 .main {
-    max-width: 450px;
+    min-width: 450px;
+    max-width: 500px !important;
     margin: auto;
     background-color: white;
     padding: 30px;
     border-radius: 20px;
 }
-    
+
+.title {
+  font-size: 48pt;
+  font-family: "Monotype Corsiva";
+  padding-bottom: 20px;
+}
+
 a {
     color: black !important;
 }
@@ -41,11 +48,13 @@ h1 {
 }
 
 .form {
-    max-width: 400px;
+    max-width: 450px;
     margin: auto !important;
 }
 
 .alert, .notice {
+    border-radius: 0px !important;
+    padding: 12px;
     /* height: 100px; */
     background-color: black;
     text-align: center;
@@ -60,9 +69,19 @@ h1 {
     color: darkorange !important;
 }
 
-.recent-links {
-    margin-left: auto;
-    margin-right:  auto;
-    font-size: 0.8em;
-    max-width: 30%;
+
+/* RESULT */
+.result-bar {
+  color: yellow !important;
+  margin-top: 50px;
+  font-weight: bold;
+  text-align: center;
+  background-color: rgba(150, 150, 150, 0.5);
+  opacity: 0;
+
+  transition: opacity 0.5s;
+}
+
+.visible {
+  opacity: 1.0;
 }
