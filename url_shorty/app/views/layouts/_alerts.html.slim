@@ -1,0 +1,9 @@
+- if alert
+  div.alert
+	  = alert.length > 1 ? alert : 'Link was empty or format was invalid. Check it and try again.'
+
+- elsif notice 
+  div.notice
+    = notice
+    a href== flash[:lnk]
+      span = flash[:lnk]

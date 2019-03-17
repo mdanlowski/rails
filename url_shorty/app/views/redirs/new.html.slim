@@ -1,0 +1,25 @@
+div.result-bar
+main.main
+
+  header.text-center
+    h1.title ___Gnarl___
+    h4 Rails URL Forwarder
+    h2.text-center _________________________
+
+  div.container.container-fluid
+    div.form
+      = form_for :redir, remote: true, url: {action: 'create'} do |form|
+        p.text-center = form.label "Link in clipboard? Just click the field!", title: "Access to clipboard must be allowed."
+        p = form.text_field :source, class: 'form-control', onfocus: "autoPaste(this, event);"
+        p = form.submit "Add link", class: 'form-control btn btn-dark'
+
+  footer.text-center
+    sub
+      |by 
+      a href="https://mdanlowski.github.io" 
+        strong mdski
+      br
+      br
+      |repo 
+      a href="https://github.com/mdanlowski/@TODO REPOOOOO" 
+        strong here
