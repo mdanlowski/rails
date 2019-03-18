@@ -25,6 +25,8 @@
   </p>
   
 
+
+
   <h1><%= "Your channel: #{@test.channel.title}" %></h1>
   <% @test.items.first(2).each do |item| %>
   <article class="article"> 
@@ -33,3 +35,19 @@
     <p> <%= simple_format(item.description) %> </p>
   </article>
   <% end %>
+
+
+
+
+  <% @_test_.each do |chan| %>
+
+  <h1 style="text-align: center; font-size: 40px;"><%= "Your channel: #{chan.title}" %></h1>
+
+  <% chan.items.first(2).each do |item| %>
+  <article class="article"> 
+    <p class="feed-article-title"> <h2><%= item.title %></h2> </p>
+    <p> <%= item.link %> </p>
+    <p> <%= simple_format(item.description) %> </p>
+  </article>
+  <% end %>
+<% end %>

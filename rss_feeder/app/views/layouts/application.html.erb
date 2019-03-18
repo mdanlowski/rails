@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RssFeeder</title>
+    <title>RssFeedAggregator</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+    <div class="main-grid">
+      <%= render 'layouts/sidepanel' %>    
+      <div id="root">
+        <%= render 'layouts/alerts' %>    
+        <%= yield %>
+      </div>
+  </div>
+</body>
 </html>

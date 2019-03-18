@@ -1,88 +1,142 @@
-require 'rss'
-require 'open-uri'
+require 'validator_service.rb'
 
 class FeedsController < ApplicationController
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
+  before_action :update_entries_job, only: [:index]
 
-  # GET /feeds
-  # GET /feeds.json
   def index
     @feeds = Feed.all
 
   end
 
-  # GET /feeds/1
-  # GET /feeds/1.json
   def show
-    urls = ["http://www.ruby-lang.org/en/feeds/news.rss",
-      "http://feeds.feedburner.com/CssTricks",
-      "http://rss.slashdot.org/Slashdot/slashdot",
-      "http://feeds.mashable.com/Mashable"]
-    feeds = []
-    for u in urls do
-      rss = open(u)
-      feeds.push RSS::Parser.parse(rss)
-    end
-    @test = feeds
+    @entries = @feed.entries.sort_by(&:published).reverse
   end
 
-  # GET /feeds/new
+  ### non REST ###
+  def filter
+    @category = filter_params[:category]
+    @filtered_entries = []
+    #Entry.where(categories.include? @category) # :((
+    Entry.all.each do |filter_entry|
+      if filter_entry.categories.include? @category
+        @filtered_entries.push(filter_entry)
+      else
+        next filter_entry
+      end
+    end
+  end
+
   def new
     @feed = Feed.new
   end
 
-  # GET /feeds/1/edit
   def edit
   end
 
-  # POST /feeds
-  # POST /feeds.json
   def create
     @feed = Feed.new(feed_params)
-
-    respond_to do |format|
+    fill_remaining_data(@feed, @@feed_data)
+    unless Feed.exists? :url => (@feed.url)
       if @feed.save
-        format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
-        format.json { render :show, status: :created, location: @feed }
+        persist_feed_entries(@feed, @@feed_data)
+        flash[:notice] = 'Feed was successfully created.'
+        redirect_to @feed
       else
-        format.html { render :new }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
+        flash[:alert] = 'Feed was not created.'
+        redirect_to new_feed_path
       end
+    else
+      flash[:alert] = 'You have already subscribed to this channel.'
+      redirect_to new_feed_path
     end
   end
 
-  # PATCH/PUT /feeds/1
-  # PATCH/PUT /feeds/1.json
   def update
-    respond_to do |format|
-      if @feed.update(feed_params)
-        format.html { redirect_to @feed, notice: 'Feed was successfully updated.' }
-        format.json { render :show, status: :ok, location: @feed }
+    # *** Here we check if persistence count was changed **
+    old_count = @feed.keep_n_last
+    if @feed.update(edit_feed_params)
+      if @feed.keep_n_last > old_count
+        # PULL ADDITIONAL ENTRIES FROM REMOTE
+        InitialFeedFetchJob.perform_later(@feed, @feed.url)
+        flash[:notice] = 'Feed was successfully updated. Refresh to see new entries.'
+
+      elsif @feed.keep_n_last < old_count
+        # REMOVE OUTOFBOUNDS ENTRIES FROM LOCAL STORAGE
+        to_remove = old_count - @feed.keep_n_last
+        @feed.entries.sort_by(&:published).first(to_remove).each do |rem|
+          rem.destroy
+        end
+        flash[:notice] = 'Feed was successfully updated. Entries truncated.'
+
       else
-        format.html { render :edit }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
+        flash[:notice] = 'Feed was successfully updated.'
       end
+      redirect_to @feed
+    else
+      render :edit
     end
+    
   end
 
-  # DELETE /feeds/1
-  # DELETE /feeds/1.json
   def destroy
-    @feed.destroy
-    respond_to do |format|
-      format.html { redirect_to feeds_url, notice: 'Feed was successfully destroyed.' }
-      format.json { head :no_content }
+    @feed.destroy!
+    flash[:notice] = 'Feed was successfully removed.'
+    redirect_to feeds_url
+    
+  end
+
+  # help
+  def prevalidate
+    @result = ValidatorService.new(prevalidate_params[:url]).call
+    @@feed_data = @result
+    respond_to do |f|
+      f.js
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_feed
       @feed = Feed.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def feed_params
-      params.require(:feed).permit(:index, :show, :new, :create, :delete)
+
+    def prevalidate_params
+      params.permit(:url)
     end
+
+    def feed_params
+      params.require(:feed).permit(:url, :description, :name, :update_interval, :keep_n_last)
+    end
+
+    def filter_params
+      params.permit(:category)
+    end
+
+
+    def edit_feed_params
+      params.require(:feed).permit(:url, :description, :name, :update_interval, :keep_n_last, :feed_active)
+    end
+
+    # @ TODO DELEGATE TO SERVICE/JOB
+    def fill_remaining_data(feed, data)
+      source_feed_object = data[:obj]
+
+      feed.description = source_feed_object.description
+      feed.guid = Digest::MD5.hexdigest(data[:name] + data[:validUrl])
+      feed.feed_active = true
+      feed.last_published_at = source_feed_object.entries.first.published
+      
+    end
+
+    def persist_feed_entries(feed, data)
+      InitialFeedFetchJob.perform_later(feed, data[:validUrl])
+
+    end
+
+    def update_entries_job
+      IntervalFeedFetchJob.perform_later
+
+    end
+   
 end

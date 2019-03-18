@@ -1,0 +1,44 @@
+h1.article-header 
+  'Your Feed: 
+  em = @feed.name
+  
+- if @feed.entries.empty?
+  p
+    'Content will arrive very soon...
+    a href="javascript:location.reload()" [Refresh]
+
+article.recent-entries
+  - @entries.each do |entry|
+    div.entry.after-connent
+      div.channel-header 
+        = simple_format(entry.title, {}, wrapper_tag: "h4")
+      em Full story: 
+      em = link_to entry.url.to_s, entry.url
+      / = entry.image.nil?
+
+      div.content = strip_tags(simple_format(entry.summary, {}, wrapper_tag: "div")) + "..."
+
+      div.details.after-content.text-right
+        = "By: " + entry.author
+        |  |  
+        = "Published: " + entry.published.to_s
+        |  |  
+        strong = link_to 'Read whole article', entry.url
+
+hr
+br
+
+= link_to 'Edit', edit_feed_path(@feed), class: "btn btn-info"
+/ |  | 
+= link_to 'Back', feeds_path, class: "btn btn-warning"
+
+
+/* 
+  channel
+    title
+    link
+    description
+    item(s)
+      title
+      link
+      description

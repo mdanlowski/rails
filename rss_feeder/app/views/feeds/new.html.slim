@@ -1,0 +1,39 @@
+header
+  h1 Add a channel to your feeds
+  / *** Open link and see if it's a valid feed ***
+
+div.forms
+  = form_with(url: "prevalidate", remote: true) do |f|
+    p
+      = f.label "Feed channel URL"
+      = f.text_field :url, class: "form-control", placeholder: "Please fill this first"
+    p = f.submit "Continue", class: "btn btn-success"
+
+  / *** If the feed is valid, async server response (prevalidate.js) autofills 
+  /     fields: url and name from the below form, and enables the rest ***
+  div.after-url
+    = form_for :feed, url: {controller: "feeds", action: "create"} do |form|
+      p.field.update-on-success-hidden
+        label.update-on-success-hidden Feed channel URL
+        = form.text_field :url, id: "validate_channel_url", class: "update-on-success-hidden"
+      p.field
+        label Feed name
+        = form.text_field :name, disabled: true, id: "after_validate_name", class: "disabled form-control"
+      p.field
+        label Channel description
+        = form.text_field :description, disabled: true, id: "after_validate_description", class: "disabled form-control"
+      p.field
+        label Preferred update frequency (minutes)
+        = form.number_field :update_interval, value: 15, disabled: true, class: "disabled form-control"
+      p.field
+        label No. of recent channel items do you wish to keep
+        = form.number_field :keep_n_last, value: 5, disabled: true, class: "disabled form-control"
+      p.finalize
+        = form.submit "Done!", disabled: true, class: "disabled btn btn-success"
+
+hr
+br
+
+= link_to 'Back', feeds_path, class: "btn btn-info"
+/ |  |  
+a.btn.btn-warning href="javascript:location.reload()" Reset Form

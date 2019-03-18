@@ -1,3 +1,38 @@
-// Place all the styles related to the feeds controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.article-header {
+  line-height: 1.5em;
+  height: 50px;
+  text-align: center;
+  // background-color: #666;
+}
+
+.recent-entries {
+  margin: 5px;
+  padding-left: 20px;
+}
+.entry {
+  // border: 1px solid #666;
+  background-color: rgb(241, 241, 241);
+  margin-top: 25px;
+  padding: 1em 2em;
+}
+.content{
+  margin-top: 10px;
+}
+.after-url, .after-content {
+  margin-top: 20px;
+}
+// FORMS
+.forms {
+  max-width: 400px;
+}
+.update-on-success-hidden {
+  display: none;
+}
+.success {
+  border: 1px solid lime !important;
+}
+.error {
+  border: 2px solid crimson !important;
+}
+

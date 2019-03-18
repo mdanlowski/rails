@@ -1,0 +1,36 @@
+h1 Feeds
+
+- if @feeds.count.zero?
+  p
+    h4.text-center 
+      |Pitch Black! Add some channels here: 
+      = link_to "Click!", new_feed_path
+
+- if @feeds.count > 0
+  table.table.table-striped
+    thead
+      tr
+        th Name
+        th Active
+        th Update frequency
+        th Fetching entries
+        th Last update
+        th.td-slim colspan="3" Actions
+
+    tbody
+      - @feeds.each do |feed|
+        tr
+          td = feed.name
+          td = feed.feed_active ? "Yes" : "No"
+          td = feed.update_interval.to_s + " min"
+          td = feed.keep_n_last
+          td = feed.updated_at
+          td.td-slim = link_to 'Read Feed', feed, class: "btn btn-info"
+          td.td-slim = link_to 'Edit', edit_feed_path(feed), class: "btn btn-warning"
+          td.td-slim = link_to 'Unsubscribe', feed, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+  br
+
+hr
+br
+
+= link_to 'New Feed', new_feed_path, class: "btn btn-success"

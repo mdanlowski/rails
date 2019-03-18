@@ -1,0 +1,23 @@
+- require "categories_provider_service"
+
+div id="sidepanel"
+  div.sidepanel-content
+    header.text-center
+      h3 Welcome to your information space
+
+    div.nav-panel
+      a.btn.btn-info.nav-button href=feeds_path Home
+      a.btn.btn-success.nav-button href=new_feed_path Add new Feed
+      a.btn.btn-dark.nav-button disabled="true" href="" Favorites (soon)
+      a.btn.btn-dark.nav-button disabled="true" href="" Bookmarked (soon)
+    
+    hr
+
+    div.settings-panel
+      div.text-center
+        h5 Filters
+      div.filters-panel
+        - CategoriesProviderService.provide.each do |cat|
+          - cat_key = cat.to_s
+          = link_to cat_key, {controller: "feeds", action: "filter", category: cat_key}, style: "color: whitesmoke"
+          ', 

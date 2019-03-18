@@ -1,0 +1,31 @@
+header
+  h1 
+    'Edit channel:
+    em = @feed.name
+  / *** Open link and see if it's a valid feed ***
+
+div.forms
+  div.after-url
+    = form_for :feed, url: {controller: "feeds", action: "update"}, method: :patch do |form|
+      p.field
+        label Feed channel URL
+        = form.text_field :url, id: "validate_channel_url", disabled: true, class: "form-control", title: "Uneditable. If you wish to add a different url, open New Feed screen"
+      p.field
+        label Feed name
+        = form.text_field :name, id: "after_validate_name", class: "form-control"
+      p.field
+        label Preferred update frequency (minutes)
+        = form.number_field :update_interval, class: "form-control"
+      p.field
+        label No. of recent channel items do you wish to keep
+        = form.number_field :keep_n_last, class: "form-control"
+      p.field.text-center
+        label Enable checking for updates
+        = form.check_box :feed_active, class: "form-control"
+      p.finalize
+        = form.submit "Done!", class: "btn btn-success"
+
+hr
+br
+
+= link_to 'Back', feeds_path, class: "btn btn-warning"

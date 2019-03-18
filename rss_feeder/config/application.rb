@@ -17,7 +17,7 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module RssFeeder
+module RssFeedAggregator
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
@@ -29,5 +29,11 @@ module RssFeeder
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+  end
+end
+
+module SidekiqJobs
+  class Application < Rails::Application
+    config.active_job.queue_adapter = Rails.env.production? ? :sidekiq : :async
   end
 end

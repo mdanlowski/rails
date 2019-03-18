@@ -1,0 +1,32 @@
+var resultMsg = "<%= j @result[:outcome].to_s %>";
+// console.log(resultMsg)
+$(document).ready(function(){
+  var raw = "<%= j @result.to_json %>";
+  var resBody = JSON.parse(decodeHtml(raw));
+
+  if(resultMsg === "Success"){
+    // console.log(resBody, resBody.validUrl, resBody.name);
+    $("#validate_channel_url").val(resBody.validUrl);
+    $("#url")[0].disabled = true;
+    $("#after_validate_name").val(resBody.name);
+    $("#after_validate_description").val(resBody.description);
+    var elemsToEnable = $(".disabled");
+    for (let i = 0; i < elemsToEnable.length; i++) {
+      elemsToEnable[i].disabled = false;
+    }
+    $("#url").removeClass("error").addClass("success");
+    elemsToEnable.removeClass("error disabled").addClass("success");
+
+  } else {
+    // console.log(resBody);
+    $("#url").addClass("error");
+    $(".disabled").removeClass("success");
+    alert(resBody.outcome + ". " + resBody.errmsg)
+  }
+});
+
+function decodeHtml(html) {
+  var txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
+}
