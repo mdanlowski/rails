@@ -1,5 +1,7 @@
 # README
 
+![](dashboard.png)
+
 ## Set up
 - `bundle install`
 
