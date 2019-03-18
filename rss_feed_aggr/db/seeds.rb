@@ -25,8 +25,8 @@ Feed.create(
 )
 
 for x in (0..14) do
-  Feed.first.entries.create!(
-    url: f1.entries[x][:url],
+  Feed.last.entries.create!(
+    url: f1.entries[x].url,
     guid: f1.entries[x].id,
     title: f1.entries[x].title || "Title not given",
     author: f1.entries[x].author || "Not given",

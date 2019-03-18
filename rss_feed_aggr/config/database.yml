@@ -15,18 +15,16 @@
 # gem 'pg'
 #
 default: &default
-  # adapter: postgresql
-  # encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: dbadmin
-  password: 13813875
-  host: localhost
+
+  # adapter: mysql2
+  # encoding: utf8
+  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # username: dbadmin
+  # password: 13813875
+  # host: localhost
 
 
 development:

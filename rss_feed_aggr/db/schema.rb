@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2019_03_18_031215) do
 
-  create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "entries", force: :cascade do |t|
     t.string "url", default: "Not given"
     t.string "guid", default: "Not given"
     t.string "title", default: "Not given"
@@ -26,13 +29,13 @@ ActiveRecord::Schema.define(version: 2019_03_18_031215) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "feeds", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "feeds", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "url"
     t.string "guid"
     t.datetime "last_published_at"
-    t.boolean "feed_active"
+    t.boolean "feed_active", default: true
     t.integer "update_interval"
     t.integer "keep_n_last"
     t.datetime "created_at", null: false

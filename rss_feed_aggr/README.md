@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Set up
+- `bundle install`
 
-Things you may want to cover:
+- `sudo -u postgres psql`  (provided PSQL is installed)
 
-* Ruby version
+- > `CREATE DATABASE rss_feeder_development;`
+- > `CREATE DATABASE rss_feeder_test;`
 
-* System dependencies
+- > Exit PSQL with CTRL+Z
 
-* Configuration
+- `rake db:migrate`
 
-* Database creation
+- `rake db:seed`
 
-* Database initialization
+- `rails s`
 
-* How to run the test suite
+Visit `localhost:3000`
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## Starring
+- postgresql
+- feedjira
+- slim
+- jquery-rails
+- sidekiq
+- sidekiq-cron
 
-* ...
+## Mechanics
+tbc
