@@ -1,6 +1,12 @@
 # rails
 Ruby on Rails practice
 
+## RSS AGGREGATOR (rss_feed_aggr)
+
+- RSS channels can be subscribed
+- User can specify refresh rates and no. of posts to keep saved
+
+
 ## simple_blog - 
 
 - Fully functional blog with users and posts - users can add avatars, edit posts, share and more
@@ -13,9 +19,9 @@ Ruby on Rails practice
 - learning to integrate Rails, Node and ReactJS
 
 
-## url_shorty
+## Gnarl (former url_shorty) **[finished]**
 
-- building a url shorten-er app
+- building a url shorten-er app 
 
 
 ## Proto 
