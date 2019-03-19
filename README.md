@@ -21,7 +21,7 @@ Ruby on Rails practice
 
 ## Gnarl (former url_shorty) **[finished]**
 
-- building a url shorten-er app 
+- building a url shorten-er app (Demo: http://gnurl.herokuapp.com)
 
 
 ## Proto 
